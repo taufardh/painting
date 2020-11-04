@@ -1,6 +1,6 @@
 ---
 layout: default
-tititle: "Mahaputera Gallery"
+title: "Mahaputera Gallery"
 ---
 
 <!DOCTYPE html>
@@ -499,14 +499,15 @@ tititle: "Mahaputera Gallery"
   -->
 
   <div class="fixed-action-btn click-to-toggle">
-    <a class="btn-floating btn-large green">
+    <a class="btn-floating btn-large grey darken-4 pulse">
       <i class="material-icons">music_note</i>
     </a>
     <ul>
       <li><a id="vid_control" class="btn-floating btn-large red" onclick="VidCtrl();"><i class="material-icons large">play_arrow</i></a></li>
-      <li><a class="btn-floating yellow darken-1" onclick="change_vid();"><i class="material-icons">skip_next</i></a></li>
-      <li><a class="btn-floating green" onclick="change_vid2();"><i class="material-icons">skip_previous</i></a></li>
-      <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+      <li><a class="btn-floating grey darken-3" onclick="change_vid();"><i class="material-icons">skip_next</i></a></li>
+      <li><a class="btn-floating grey darken-3" onclick="change_vid2();"><i class="material-icons">skip_previous</i></a></li>
+      <li><a class="btn-floating grey darken-3" onclick="setVolume('up');"><i class="material-icons">volume_up</i></a></li>
+      <li><a class="btn-floating grey darken-3" onclick="setVolume('down');"><i class="material-icons">volume_down</i></a></li>
     </ul>
   </div>
 
@@ -651,6 +652,22 @@ tititle: "Mahaputera Gallery"
           vid_controller.pause();
           vid_stat = false;
           $('#vid_control').html('<i class="large material-icons">play_arrow</i>');
+      }
+
+      function setVolume(vol) {
+        var curr_volume = vid_controller.volume;
+        if(vol == 'up'){
+          if(curr_volume != 1){
+            vid_controller.volume = curr_volume + 0.1;
+          }
+          console.log(curr_volume);
+        }
+        else if(vol == 'down'){
+          if(curr_volume != 0){
+            vid_controller.volume = curr_volume - 0.1;
+          }
+          console.log(curr_volume);
+        }
       }
 
     </script>
