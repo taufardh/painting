@@ -657,7 +657,7 @@ title: "Mahaputera Gallery"
       function setVolume(vol) {
         var curr_volume = vid_controller.volume * 10;
         if(vol == 'up'){
-          if(curr_volume != 1){
+          if(curr_volume != 10){
             Math.round(curr_volume);
             curr_volume = curr_volume + 1;
             vid_controller.volume = curr_volume/10;
