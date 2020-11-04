@@ -1097,14 +1097,10 @@ nav ul.dropdown-content li > a:hover,
 
       function VidCtrl() {
         if(vid_stat){
-          vid_controller.pause();
-          vid_stat = false;
-          $('#vid_control').html('<i class="large material-icons">play_arrow</i>');
+          pauseVid();
         }
         else{
-          vid_controller.play();
-          vid_stat = true;
-          $('#vid_control').html('<i class="large material-icons">stop</i>');
+          playVid();
         }
       }
 
@@ -1119,7 +1115,7 @@ nav ul.dropdown-content li > a:hover,
             alert('Youtube API Error');
           }
         });
-        vid_controller.play();
+        playVid();
       }
 
       function change_vid2(){
@@ -1133,20 +1129,20 @@ nav ul.dropdown-content li > a:hover,
             alert('Youtube API Error');
           }
         });
-        vid_controller.play();
+        playVid();
       }
 
-      /*
+
       function playVid() {
-          vid.play();
+          vid_controller.play();
           vid_stat = true;
           $('#vid_control').html('<i class="large material-icons">stop</i>');
       }
 
       function pauseVid() {
-          vid.pause();
+          vid_controller.pause();
           vid_stat = false;
           $('#vid_control').html('<i class="large material-icons">play_arrow</i>');
       }
-      */
+
     </script>
