@@ -29,6 +29,55 @@ title: "Mahaputera Gallery"
     height: 100%;
     transform: rotateZ(0);
   }
+
+  * { box-sizing: border-box; }
+		.video-background {
+			background: #000;
+			position: fixed;
+			top: -7%!important; right: 0; bottom: 0; left: 0;
+			z-index: -99;
+		}
+		.video-foreground,
+		.video-background iframe {
+			position: absolute;
+			top: -7%!important;
+			left: 0;
+			width: 100%;
+			height: 115%;
+			pointer-events: none;
+		}
+
+
+		/* iPads (landscape) ----------- */
+		@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+			.video-foreground { width: 110%!important; left: 0; }
+		}
+
+
+		@media only screen and (min-width: 768px) {
+			.video-foreground {width: 180%;height: 118%; left: 0; }
+		}
+
+		/* Large devices (laptops/desktops, 992px and up) */
+		@media only screen and (min-width: 992px) {
+			.video-foreground { width: 100%; left: 0; }
+		}
+
+		/* Extra large devices (large laptops and desktops, 1200px and up) */
+		@media only screen and (min-width: 1200px) {
+			.video-foreground { width: 100%; height: 120%; left: 0; }
+		}
+
+		@media all and (max-width: 600px) {
+			.video-foreground { width: 300%; left: -150%; }
+		}
+		@media all and (max-width: 500px) {
+			.video-foreground { width: 500%; left: -150%; }
+		}
+
+		@media all and (max-width: 400px) {
+			.video-foreground { width: 500%; left: -150%; }
+		}
 </style>
 
 </head>
@@ -41,7 +90,11 @@ title: "Mahaputera Gallery"
           <div class="ea k" style="background-image: url('//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/stars.jpg?v=5515476722915587986');"></div>
         -->
         {% comment %} <video loop autoplay playsinline id="video"></video> {% endcomment %}
-        <div id="player"></div>
+        <div class="video-background">
+          <div class="video-foreground">
+            <div id="player"></div>
+          </div>
+        </div>
       </div>
       <div class="nav-wrapper db">
         <a href="/pages/demo" class="brand-logo"><i class="material-icons">camera</i>Hujan</a>
