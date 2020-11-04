@@ -655,17 +655,23 @@ title: "Mahaputera Gallery"
       }
 
       function setVolume(vol) {
-        var curr_volume = vid_controller.volume;
+        var curr_volume = vid_controller.volume * 10;
         if(vol == 'up'){
           if(curr_volume != 1){
-            vid_controller.volume = curr_volume + 0.1;
+            Math.round(curr_volume);
+            curr_volume = curr_volume + 1;
+            vid_controller.volume = curr_volume/10;
           }
+          console.log(vid_controller.volume);
           console.log(curr_volume);
         }
         else if(vol == 'down'){
-          if(curr_volume >= 0.1){
-            vid_controller.volume = curr_volume - 0.1;
+          if(curr_volume != 0){
+            Math.round(curr_volume);
+            curr_volume = curr_volume - 1;
+            vid_controller.volume = curr_volume/10;
           }
+          console.log(vid_controller.volume);
           console.log(curr_volume);
         }
       }
