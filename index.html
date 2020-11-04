@@ -663,7 +663,7 @@ title: "Mahaputera Gallery"
           console.log(curr_volume);
         }
         else if(vol == 'down'){
-          if(curr_volume != 0){
+          if(curr_volume >= 0.1){
             vid_controller.volume = curr_volume - 0.1;
           }
           console.log(curr_volume);
