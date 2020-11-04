@@ -464,7 +464,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
     </div><!-- /.container -->
 
     <div class="fixed-action-btn">
-      <a id="vid_control" class="btn-floating btn-large blue" onclick="playVid();">
+      <a id="vid_control" class="btn-floating btn-large blue" onclick="VidCtrl();">
         <i class="large material-icons">play_arrow</i>
       </a>
     </div>
@@ -560,6 +560,20 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
 
       var vid = document.getElementById("video");
 
+      function VidCtrl() {
+        if(vid_stat){
+          vid.pause();
+          vid_stat = false;
+          $('#vid_control').html('<i class="large material-icons">play_arrow</i>');
+        }
+        else{
+          vid.play();
+          vid_stat = true;
+          $('#vid_control').html('<i class="large material-icons">stop</i>');
+        }
+      }
+
+      /*
       function playVid() {
           vid.play();
           vid_stat = true;
@@ -571,4 +585,5 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
           vid_stat = false;
           $('#vid_control').html('<i class="large material-icons">play_arrow</i>');
       }
+      */
     </script>
