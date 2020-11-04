@@ -22,7 +22,23 @@ title: "Mahaputera Gallery"
 
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+<style>
+  .video-background {
+    background: #000;
+    position: fixed;
+    top: -7%!important; right: 0; bottom: 0; left: 0;
+    z-index: -99;
+  }
+  .video-foreground,
+  .video-background iframe {
+    position: absolute;
+    top: -7%!important;
+    left: 0;
+    width: 100%;
+    height: 115%;
+    pointer-events: none;
+  }
+</style>
 </head>
 <body>
   <!-- Navbar and Header -->
@@ -32,7 +48,11 @@ title: "Mahaputera Gallery"
             <div class="ea active" style="background-image: url('//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/stars.jpg?v=5515476722915587986');"></div>
           -->
           <!-- <video loop playsinline id="video"></video> -->
-          <div id="player"></div>
+          <div class="video-background">
+            <div class="video-foreground">
+              <div id="player"></div>
+            </div>
+          </div>
       </div>
       <div class="nav-wrapper container">
           <a href="/pages/demo" class="brand-logo"><i class="material-icons">camera</i>Hujan</a>
@@ -572,8 +592,8 @@ title: "Mahaputera Gallery"
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
 
-          height: offsetHeight,
-          width: offsetWidth,
+          height: '1024',
+          width: '1024',
           videoId: 'APD0mMWL3x4',
           playerVars: {
             'autoplay': 0,
