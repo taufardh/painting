@@ -35,13 +35,13 @@ body {
 ul {
     margin: 0;
 }
-.ef {
+.caption {
     font-size: 1.25rem;
     font-weight: 300;
     margin-bottom: 30px;
     color: #666;
 }
-.cx {
+.section {
     padding: 0 0 1.5rem 0;
 }
 .valign-wrapper {
@@ -56,7 +56,7 @@ ul {
     -ms-flex-pack: center;
     justify-content: center;
 }
-.dropdown-button i.bt {
+.dropdown-button i.right {
     margin-left: 5px;
 }
 nav {
@@ -88,7 +88,7 @@ nav ul:not(.indicators) li {
     line-height: 36px;
     margin-right: 20px;
 }
-nav ul:not(.indicators) li.k > a,
+nav ul:not(.indicators) li.active > a,
 nav ul:not(.indicators) li:hover > a {
     color: #fff;
     background-color: transparent;
@@ -128,8 +128,8 @@ nav .nav-background .ea {
     max-width: 100%;
     transition: opacity 0.7s;
 }
-nav .nav-background img.k,
-nav .nav-background .ea.k {
+nav .nav-background img.active,
+nav .nav-background .ea.active {
     opacity: 1;
 }
 nav .nav-background .ea {
@@ -173,7 +173,7 @@ nav .categories-wrapper .categories-container.pinned {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
     background-color: #fff;
 }
-nav .categories-wrapper .categories-container.pinned li.k > a,
+nav .categories-wrapper .categories-container.pinned li.active > a,
 nav .categories-wrapper .categories-container.pinned li:hover > a {
     color: #fff;
 }
@@ -193,10 +193,10 @@ nav .categories-wrapper .categories-container .categories > li > a {
 .b.gallery-collection .gallery-item {
     margin-bottom: 1px;
 }
-.b .d {
+.b .col {
     padding: 0;
 }
-.b .gallery-item .h {
+.b .gallery-item .card {
     margin: 0;
 }
 .b .en .gallery-curve-wrapper {
@@ -214,15 +214,15 @@ nav .categories-wrapper .categories-container .categories > li > a {
     -ms-flex: 1;
     flex: 1;
 }
-.b .gallery-expand.k {
+.b .gallery-expand.active {
     z-index: 9;
 }
-.b .gallery-expand.k .gallery-curve-wrapper {
+.b .gallery-expand.active .gallery-curve-wrapper {
     padding-top: 64px;
     cursor: default;
     box-shadow: none;
 }
-.b .gallery-expand.k .gallery-curve-wrapper .gallery-cover {
+.b .gallery-expand.active .gallery-curve-wrapper .gallery-cover {
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -335,18 +335,18 @@ nav .categories-wrapper .categories-container .categories > li > a {
     right: 15%;
     z-index: 2;
 }
-.b .gallery-action .g,
+.b .gallery-action .btn,
 .b .gallery-action .btn-large {
     margin-left: 10px;
     -webkit-transform: scale(0);
     transform: scale(0);
     transition: none;
 }
-.db {
+.container {
     max-width: none;
 }
-.b .gallery-action .g.k,
-.b .gallery-action .k.btn-large {
+.b .gallery-action .btn.active,
+.b .gallery-action .active.btn-large {
     -webkit-transform: scale(1);
     transform: scale(1);
     transition: box-shadow 0.3s, -webkit-transform 0.4s cubic-bezier(0.53, 0.01, 0.36, 1.63);
@@ -423,11 +423,11 @@ ul.categories li {
     border-radius: 36px;
 }
 ul.categories li:hover::before,
-ul.categories li.k::before {
+ul.categories li.active::before {
     opacity: 1;
 }
 ul.categories li:hover a,
-ul.categories li.k a {
+ul.categories li.active a {
     color: #fff;
     background-color: transparent;
 }
@@ -498,7 +498,7 @@ nav ul.dropdown-content li > a:hover,
     nav .categories-wrapper {
         height: 56px;
     }
-    .b .gallery-expand.k .gallery-curve-wrapper {
+    .b .gallery-expand.active .gallery-curve-wrapper {
         padding-top: 56px;
     }
     nav .nav-header h1 {
