@@ -27,11 +27,12 @@ title: "Mahaputera Gallery"
 <body>
   <!-- Navbar and Header -->
   <nav class="nav-extended nav-full-header z-depth-0 blue-grey darken-3">
-      <div class="nav-background">
+      <div id="bg-container" class="nav-background">
           <!--
             <div class="ea active" style="background-image: url('//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/stars.jpg?v=5515476722915587986');"></div>
           -->
-          <video loop playsinline id="video"></video>
+          <!-- <video loop playsinline id="video"></video> -->
+          <div id="player"></div>
       </div>
       <div class="nav-wrapper container">
           <a href="/pages/demo" class="brand-logo"><i class="material-icons">camera</i>Hujan</a>
@@ -503,7 +504,7 @@ title: "Mahaputera Gallery"
       <i class="material-icons">music_note</i>
     </a>
     <ul>
-      <li><a id="vid_control" class="btn-floating btn-large red" onclick="VidCtrl();"><i class="material-icons large">play_arrow</i></a></li>
+      <li><a id="vid_control" class="btn-floating btn-large red" onclick="yokPlayYok();"><i class="material-icons large">play_arrow</i></a></li>
       <!--<li><a class="btn-floating grey darken-3 waves-effect" onclick="change_vid();"><i class="material-icons">skip_next</i></a></li>
       <li><a class="btn-floating grey darken-3 waves-effect" onclick="change_vid2();"><i class="material-icons">skip_previous</i></a></li>-->
       <li><a class="btn-floating grey darken-3 waves-effect" onclick="setVolume('up');"><i class="material-icons">volume_up</i></a></li>
@@ -520,161 +521,121 @@ title: "Mahaputera Gallery"
     <!--<script src="https://cdn.jsdelivr.net/materialize/0.98.0/js/materialize.min.js"></script>-->
     <script src="{{ "/assets/js/gallery.min.js" | prepend: site.baseurl }}"></script>
     <script>
-      var vid_stat = false;
-      var vid = "APD0mMWL3x4",
-      streams,
-      video_tag = document.getElementById("video");
+     var videoPlaylist = [
+      {
+        position: "0",
+        title: "Binaural Rain Sounds For Sleep and Study in Quarantine.",
+        videoId: "APD0mMWL3x4"
+      },{
+        position: "1",
+        title: "Walking in the Rain Tokyo, Japan ",
+        videoId: "Et7O5-CzJZg"
+      },{
+        position: "2",
+        title: "Rain & Thunder Sounds in the Foggy Forest.",
+        videoId: "nRBCFsU_KDc"
+      },{
+        position: "3",
+        title: "Backstreets of Japan at night",
+        videoId: "Hndf5JRwUL0"
+      },{
+        position: "4",
+        title: "Walking in the Rain in Amsterdam.",
+        videoId: "N0af7_w5GBQ"
+      },{
+        position: "5",
+        title: "Walking in Heavy Rainstorm in NYC",
+        videoId: "uMnGzVPUEB4"
+      },{
+        position: "6",
+        title: "Relaxing Walk in the Rain, Umbrella and Nature",
+        videoId: "ynLpZGegiJE"
 
-      fetch("https://images"+~~(Math.random()*33)+"-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=https%3A%2F%2Fwww.youtube.com%2Fget_video_info%3Fvideo_id%3D" + vid).then(response => response.text()).then(function(data) {
-          if (data) {
-              streams = parse_youtube_meta(data);
-              video_tag.src = streams['720p'] || streams['360p'];
-          } else {
-            alert('Youtube API Error');
-          }
-      });
+      },{
+        position: "7",
+        title: "Driving in the Rain Seoul to Daegu, Korea",
+        videoId: "Dwswey-GqQc"
 
-      function parse_youtube_meta(rawdata) {
-          var data = parse_str(rawdata),
-              player_response = JSON.parse(data.player_response),
-              streams = [],
-              result = {};
+      }];
 
-          data.player_response = player_response;
 
-          if (data.hasOwnProperty('adaptive_fmts')) {
-            streams = streams.concat(data.adaptive_fmts.split(',').map(function(s) {
-              return parse_str(s)
-            }));
-          } else {
-            if (player_response.streamingData && player_response.streamingData.adaptiveFormats) {
-              streams = streams.concat(player_response.streamingData.adaptiveFormats);
-            }
-          }
-          if (data.hasOwnProperty('url_encoded_fmt_stream_map')) {
-            streams = streams.concat(data.url_encoded_fmt_stream_map.split(',').map(function(s) {
-              return parse_str(s)
-            }));
-          } else {
-            if (player_response.streamingData && player_response.streamingData.formats) {
-              streams = streams.concat(player_response.streamingData.formats);
-            }
-          }
-          
-          streams.forEach(function(stream, n) {
-              var itag = stream.itag * 1,
-                  quality = false,
-                  itag_map = {
-                      18: '360p',
-                      22: '720p',
-                      37: '1080p',
-                      38: '3072p',
-                      82: '360p3d',
-                      83: '480p3d',
-                      84: '720p3d',
-                      85: '1080p3d',
-                      133: '240pna',
-                      134: '360pna',
-                      135: '480pna',
-                      136: '720pna',
-                      137: '1080pna',
-                      264: '1440pna',
-                      298: '720p60',
-                      299: '1080p60na',
-                      160: '144pna',
-                      139: "48kbps",
-                      140: "128kbps",
-                      141: "256kbps"
-                  };
-              //if (stream.type.indexOf('o/mp4') > 0) console.log(stream);
-              if (itag_map[itag]) result[itag_map[itag]] = stream.url;
-          });
-          return result;
-      };
+      let rainPlay = 0;
+      var tag = document.createElement('script');
 
-      function parse_str(str) {
-          return str.split('&').reduce(function(params, param) {
-              var paramSplit = param.split('=').map(function(value) {
-                  return decodeURIComponent(value.replace('+', ' '));
-              });
-              params[paramSplit[0]] = paramSplit[1];
-              return params;
-          }, {});
-      }
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-      var vid_controller = document.getElementById("video");
+      var player;
+      var offsetHeight = document.getElementById('bg-container').offsetHeight;
+      var offsetWidth = document.getElementById('bg-container').offsetWidth;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
 
-      function VidCtrl() {
-        if(vid_stat){
-          pauseVid();
-        }
-        else{
-          playVid();
-        }
-      }
-
-      function change_vid(){
-        vid = "B0mtZyMMhZI";
-
-        fetch("https://images"+~~(Math.random()*33)+"-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=https%3A%2F%2Fwww.youtube.com%2Fget_video_info%3Fvideo_id%3D" + vid).then(response => response.text()).then(function(data) {
-          if (data) {
-              streams = parse_youtube_meta(data);
-              //video_tag.src = streams['1080p'] || streams['720p'] || streams['360p'];
-              video_tag.src = streams['720p'] || streams['360p'];
-              playVid();
-          } else {
-            alert('Youtube API Error');
-          }
-        });
-      }
-
-      function change_vid2(){
-        vid = "APD0mMWL3x4";
-
-        fetch("https://images"+~~(Math.random()*33)+"-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=https%3A%2F%2Fwww.youtube.com%2Fget_video_info%3Fvideo_id%3D" + vid).then(response => response.text()).then(function(data) {
-          if (data) {
-              streams = parse_youtube_meta(data);
-              video_tag.src = streams['720p'] || streams['360p'];
-              playVid();
-          } else {
-            alert('Youtube API Error');
+          height: offsetHeight,
+          width: offsetWidth,
+          videoId: 'APD0mMWL3x4',
+          playerVars: {
+            'autoplay': 0,
+            'controls': 0,
+            'showinfo': 0,
+            'modestbranding': 0,
+            'loop': 1,
+            'fs': 0,
+            'cc_load_policty': 0,
+            'iv_load_policy': 3
+          },
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
           }
         });
       }
 
 
-      function playVid() {
-          vid_controller.play();
-          vid_stat = true;
-          $('#vid_control').html('<i class="large material-icons">stop</i>');
+      function onPlayerReady(event) {
+        /*event.target.playVideo();*/
+
       }
 
-      function pauseVid() {
-          vid_controller.pause();
-          vid_stat = false;
-          $('#vid_control').html('<i class="large material-icons">play_arrow</i>');
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.ENDED) {
+          setTimeout(player.playVideo(),3000);
+
+        }
       }
 
-      function setVolume(vol) {
-        var curr_volume = vid_controller.volume * 10;
-        if(vol == 'up'){
-          if(curr_volume != 10){
-            Math.round(curr_volume);
-            curr_volume = curr_volume + 1;
-            vid_controller.volume = curr_volume/10;
-          }
-          console.log(vid_controller.volume);
-          console.log(curr_volume);
+      function yokPlayYok() {
+        if(player.getPlayerState() == 1){
+          /*isPlaying*/
+          player.stopVideo();
+        }else{
+          player.playVideo();
         }
-        else if(vol == 'down'){
-          if(curr_volume != 0){
-            Math.round(curr_volume);
-            curr_volume = curr_volume - 1;
-            vid_controller.volume = curr_volume/10;
-          }
-          console.log(vid_controller.volume);
-          console.log(curr_volume);
+      }
+
+      function nextVideo(){
+        player.stopVideo();
+        if(rainPlay < videoPlaylist.length-1){
+          rainPlay = rainPlay+1;
+        }else{
+          rainPlay = 0;
         }
+        player.loadVideoById(videoPlaylist[rainPlay].videoId);
+        player.playVideo();
+        player.seekTo(5);
+      }
+
+      function prevVideo(){
+        if(rainPlay > 0){
+          rainPlay = rainPlay-1;
+        }else{
+          rainPlay = videoPlaylist.length-1;
+        }
+
+        player.stopVideo();
+        player.loadVideoById(videoPlaylist[rainPlay].videoId);
+        player.seekTo(5);
       }
 
     </script>
