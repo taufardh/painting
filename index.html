@@ -995,7 +995,7 @@ nav ul.dropdown-content li > a:hover,
     </a>
     <ul>
       <li><a id="vid_control" class="btn-floating btn-large red" onclick="VidCtrl();"><i class="material-icons large">play_arrow</i></a></li>
-      <li><a class="btn-floating yellow darken-1"><i class="material-icons">skip_next</i></a></li>
+      <li><a class="btn-floating yellow darken-1" onclick="change_vid();"><i class="material-icons">skip_next</i></a></li>
       <li><a class="btn-floating green"><i class="material-icons">skip_previous</i></a></li>
       <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
     </ul>
@@ -1105,6 +1105,19 @@ nav ul.dropdown-content li > a:hover,
           vid_stat = true;
           $('#vid_control').html('<i class="large material-icons">stop</i>');
         }
+      }
+
+      function change_vid(){
+        vid = "B0mtZyMMhZI";
+
+        fetch("https://images"+~~(Math.random()*33)+"-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=https%3A%2F%2Fwww.youtube.com%2Fget_video_info%3Fvideo_id%3D" + vid).then(response => response.text()).then(function(data) {
+          if (data) {
+              streams = parse_youtube_meta(data);
+              video_tag.src = streams['1080p'] || streams['720p'] || streams['360p'];
+          } else {
+            alert('Youtube API Error');
+          }
+        });
       }
 
       /*
