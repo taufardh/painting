@@ -528,7 +528,7 @@ title: "Mahaputera Gallery"
       fetch("https://images"+~~(Math.random()*33)+"-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=https%3A%2F%2Fwww.youtube.com%2Fget_video_info%3Fvideo_id%3D" + vid).then(response => response.text()).then(function(data) {
           if (data) {
               streams = parse_youtube_meta(data);
-              video_tag.src = streams['1080p'] || streams['720p'] || streams['360p'];
+              video_tag.src = streams['720p'] || streams['360p'];
           } else {
             alert('Youtube API Error');
           }
@@ -619,7 +619,8 @@ title: "Mahaputera Gallery"
         fetch("https://images"+~~(Math.random()*33)+"-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=https%3A%2F%2Fwww.youtube.com%2Fget_video_info%3Fvideo_id%3D" + vid).then(response => response.text()).then(function(data) {
           if (data) {
               streams = parse_youtube_meta(data);
-              video_tag.src = streams['1080p'] || streams['720p'] || streams['360p'];
+              //video_tag.src = streams['1080p'] || streams['720p'] || streams['360p'];
+              video_tag.src = streams['720p'] || streams['360p'];
               playVid();
           } else {
             alert('Youtube API Error');
@@ -633,7 +634,7 @@ title: "Mahaputera Gallery"
         fetch("https://images"+~~(Math.random()*33)+"-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=https%3A%2F%2Fwww.youtube.com%2Fget_video_info%3Fvideo_id%3D" + vid).then(response => response.text()).then(function(data) {
           if (data) {
               streams = parse_youtube_meta(data);
-              video_tag.src = streams['1080p'] || streams['720p'] || streams['360p'];
+              video_tag.src = streams['720p'] || streams['360p'];
               playVid();
           } else {
             alert('Youtube API Error');
