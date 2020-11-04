@@ -504,11 +504,11 @@ title: "Mahaputera Gallery"
     </a>
     <ul>
       <li><a id="vid_control" class="btn-floating btn-large red" onclick="VidCtrl();"><i class="material-icons large">play_arrow</i></a></li>
-      <li><a class="btn-floating grey darken-3" onclick="change_vid();"><i class="material-icons">skip_next</i></a></li>
-      <li><a class="btn-floating grey darken-3" onclick="change_vid2();"><i class="material-icons">skip_previous</i></a></li>
-      <li><a class="btn-floating grey darken-3" onclick="setVolume('up');"><i class="material-icons">volume_up</i></a></li>
-      <li><a class="btn-floating grey darken-3" onclick="setVolume('down');"><i class="material-icons">volume_down</i></a></li>
-    </ul>
+      <li><a class="btn-floating grey darken-3 waves-effect" onclick="change_vid();"><i class="material-icons">skip_next</i></a></li>
+      <li><a class="btn-floating grey darken-3 waves-effect" onclick="change_vid2();"><i class="material-icons">skip_previous</i></a></li>
+      <li><a class="btn-floating grey darken-3 waves-effect" onclick="setVolume('up');"><i class="material-icons">volume_up</i></a></li>
+      <li><a class="btn-floating grey darken-3 waves-effect" onclick="setVolume('down');"><i class="material-icons">volume_down</i></a></li>
+    </ul> 
   </div>
 
 </body>
@@ -655,17 +655,23 @@ title: "Mahaputera Gallery"
       }
 
       function setVolume(vol) {
-        var curr_volume = vid_controller.volume;
+        var curr_volume = vid_controller.volume * 10;
         if(vol == 'up'){
           if(curr_volume != 1){
-            vid_controller.volume = curr_volume + 0.1;
+            Math.round(curr_volume);
+            curr_volume = curr_volume + 1;
+            vid_controller.volume = curr_volume/10;
           }
+          console.log(vid_controller.volume);
           console.log(curr_volume);
         }
         else if(vol == 'down'){
-          if(curr_volume >= 0.1){
-            vid_controller.volume = curr_volume - 0.1;
+          if(curr_volume != 0){
+            Math.round(curr_volume);
+            curr_volume = curr_volume - 1;
+            vid_controller.volume = curr_volume/10;
           }
+          console.log(vid_controller.volume);
           console.log(curr_volume);
         }
       }
