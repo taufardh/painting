@@ -40,7 +40,7 @@ tititle: "Mahaputera Gallery"
         <!--
           <div class="ea k" style="background-image: url('//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/stars.jpg?v=5515476722915587986');"></div>
         -->
-        <video loop autoplay playsinline id="video"></video>
+        <video loop playsinline id="video"></video>
       </div>
       <div class="nav-wrapper db">
         <a href="/pages/demo" class="brand-logo"><i class="material-icons">camera</i>Hujan</a>
@@ -463,16 +463,10 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
 
     </div><!-- /.container -->
 
-    <div class="fixed-action-btn ar">
-      <a class="btn-floating btn-large red">
-        <i class="large material-icons">mode_edit</i>
+    <div class="fixed-action-btn">
+      <a id="vid_control" class="btn-floating btn-large blue" onclick="playVid();">
+        <i class="large material-icons">play_arrow</i>
       </a>
-      <ul>
-        <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-        <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-        <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-        <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
-      </ul>
     </div>
 
 
@@ -482,6 +476,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
     <!--<script src="https://cdn.jsdelivr.net/materialize/0.98.0/js/materialize.min.js"></script>-->
     <script src="{{ "/assets/js/gallery.min.js" | prepend: site.baseurl }}"></script>
     <script>
+      var vid_stat = false;
       var vid = "APD0mMWL3x4",
       streams,
       video_tag = document.getElementById("video");
@@ -561,5 +556,19 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
               params[paramSplit[0]] = paramSplit[1];
               return params;
           }, {});
+      }
+
+      var vid = document.getElementById("video");
+
+      function playVid() {
+          vid.play();
+          vid_stat = true;
+          $('#vid_control').html('<i class="large material-icons">stop</i>');
+      }
+
+      function pauseVid() {
+          vid.pause();
+          vid_stat = false;
+          $('#vid_control').html('<i class="large material-icons">play_arrow</i>');
       }
     </script>
