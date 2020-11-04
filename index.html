@@ -1092,16 +1092,16 @@ nav ul.dropdown-content li > a:hover,
           }, {});
       }
 
-      var vid = document.getElementById("video");
+      var vid_controller = document.getElementById("video");
 
       function VidCtrl() {
         if(vid_stat){
-          vid.pause();
+          vid_controller.pause();
           vid_stat = false;
           $('#vid_control').html('<i class="large material-icons">play_arrow</i>');
         }
         else{
-          vid.play();
+          vid_controller.play();
           vid_stat = true;
           $('#vid_control').html('<i class="large material-icons">stop</i>');
         }
