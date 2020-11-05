@@ -634,10 +634,10 @@ title: "Mahaputera Gallery"
         if(player.getPlayerState() == 1){
           /*isPlaying*/
           player.stopVideo();
-          $('#vid_control').text('<i class="material-icons large">stop</i>');
+          $('#vid_control').html('<i class="material-icons large">stop</i>');
         }else{
           player.playVideo();
-          $('#vid_control').text('<i class="material-icons large">play_arrow</i>');
+          $('#vid_control').html('<i class="material-icons large">play_arrow</i>');
         }
       }
 
