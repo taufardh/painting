@@ -534,7 +534,7 @@ title: "Mahaputera Gallery"
       <li><a class="btn-floating grey darken-3 waves-effect" onclick="prevVideo();"><i class="material-icons">skip_previous</i></a></li>
       <li><a class="btn-floating grey darken-3 waves-effect" onclick="setVolume('up');"><i class="material-icons">volume_up</i></a></li>
       <li><a class="btn-floating grey darken-3 waves-effect" onclick="setVolume('down');"><i class="material-icons">volume_down</i></a></li>
-    </ul> 
+    </ul>
   </div>
 
 </body>
@@ -634,8 +634,10 @@ title: "Mahaputera Gallery"
         if(player.getPlayerState() == 1){
           /*isPlaying*/
           player.stopVideo();
+          $('#vid_control').text('<i class="material-icons large">stop</i>');
         }else{
           player.playVideo();
+          $('#vid_control').text('<i class="material-icons large">play_arrow</i>');
         }
       }
 
