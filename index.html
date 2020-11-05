@@ -664,13 +664,14 @@ title: "Mahaputera Gallery"
       }
 
       function setVolume(change){
+          var curr_volume = player.getVolume();
           if(change == 'up'){
-            console.log(player.getVolume():Number);
+            console.log(curr_volume);
             //player.setVolume(volume);
           }
           else if(change == 'down'){
             //player.setVolume(volume);
-            console.log(player.getVolume():Number);
+            console.log(curr_volume);
           }
       }
 
