@@ -529,7 +529,7 @@ title: "Mahaputera Gallery"
       <i class="material-icons">music_note</i>
     </a>
     <ul>
-      <li><a id="vid_control" class="btn-floating btn-large red" onclick="yokPlayYok();"><i class="material-icons large">play_arrow</i></a></li>
+      <li><a id="vid_control" class="btn-floating btn-large red" onclick="playVid();"><i class="material-icons large">play_arrow</i></a></li>
       <li><a class="btn-floating grey darken-3 waves-effect" onclick="nextVideo();"><i class="material-icons">skip_next</i></a></li>
       <li><a class="btn-floating grey darken-3 waves-effect" onclick="prevVideo();"><i class="material-icons">skip_previous</i></a></li>
       <li><a class="btn-floating grey darken-3 waves-effect" onclick="setVolume('up');"><i class="material-icons">volume_up</i></a></li>
@@ -630,7 +630,7 @@ title: "Mahaputera Gallery"
         }
       }
 
-      function yokPlayYok() {
+      function playVid() {
         if(player.getPlayerState() == 1){
           /*isPlaying*/
           player.stopVideo();
