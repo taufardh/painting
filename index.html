@@ -664,15 +664,17 @@ title: "Mahaputera Gallery"
       }
 
       function setVolume(change){
-          var curr_volume = player.getVolume();
-          if(change == 'up'){
-            console.log(curr_volume);
+        var curr_volume = player.getVolume();
+        if(change == 'up'){
+            curr_volume = curr_volume + 10;
+            player.setVolume(curr_volume);
+        }
+        else if(change == 'down'){
+            curr_volume = curr_volume - 10;
+            player.setVolume(curr_volume);
             //player.setVolume(volume);
-          }
-          else if(change == 'down'){
-            //player.setVolume(volume);
-            console.log(curr_volume);
-          }
+        }
+        console.log(player.getVolume());
       }
 
     </script>
