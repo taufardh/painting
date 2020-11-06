@@ -132,7 +132,7 @@ title: "Mahaputera Gallery"
 
             <div class="ea active bg-image"></div>
           <!-- <video loop playsinline id="video"></video> -->
-          <div class="video-background">
+          <div class="video-background" style="display: none;">
             <div class="video-foreground">
                 <div id="player"></div>
             </div>
@@ -749,11 +749,13 @@ title: "Mahaputera Gallery"
           /*isPlaying*/
           player.stopVideo();
           $('#vid_control').html('<i class="material-icons large">play_arrow</i>');
-          $('.bg-image').attr("style", "display: none;");
+          $('.bg-image').removeAttr("style");
+          $('.video-background').attr("style", "display: none;");
         }else{
           player.playVideo();
           $('#vid_control').html('<i class="material-icons large">stop</i>');
-          $('.bg-image').removeAttr("style");
+          $('.bg-image').attr("style", "display: none;");
+          $('.video-background').removeAttr("style");
         }
       }
 
