@@ -107,6 +107,10 @@ title: "Mahaputera Gallery"
       transform: rotate(-90deg);
     }
   }
+
+  .bg-image{
+      background-image: url('https://i.postimg.cc/qRk3LW5F/DSC04160.jpg');
+  }
 </style>
 </head>
 <body>
@@ -125,9 +129,8 @@ title: "Mahaputera Gallery"
   <!-- Navbar and Header -->
   <nav class="nav-extended nav-full-header z-depth-0 blue-grey darken-3">
       <div id="bg-container" class="nav-background">
-          <!--
-            <div class="ea active" style="background-image: url('//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/stars.jpg?v=5515476722915587986');"></div>
-          -->
+
+            <div class="ea active bg-image"></div>
           <!-- <video loop playsinline id="video"></video> -->
           <div class="video-background">
             <div class="video-foreground">
@@ -746,9 +749,11 @@ title: "Mahaputera Gallery"
           /*isPlaying*/
           player.stopVideo();
           $('#vid_control').html('<i class="material-icons large">play_arrow</i>');
+          $('.bg-image').attr("style", "display: none;");
         }else{
           player.playVideo();
           $('#vid_control').html('<i class="material-icons large">stop</i>');
+          $('.bg-image').removeAttr("style");
         }
       }
 
