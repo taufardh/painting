@@ -847,11 +847,11 @@ theme.customerAddresses = (function () {
     }
 
     // Initialize observers on address selectors, defined in shopify_common.js
-    if (Shopify) {
-        new Shopify.CountryProvinceSelector("AddressCountryNew", "AddressProvinceNew", {
-            hideElement: "AddressProvinceContainerNew",
-        });
-    }
+    // if (Shopify) {
+    //     new Shopify.CountryProvinceSelector("AddressCountryNew", "AddressProvinceNew", {
+    //         hideElement: "AddressProvinceContainerNew",
+    //     });
+    // }
 
     // Initialize each edit form's country/province selector
     $(".address-country-option").each(function () {
@@ -860,9 +860,9 @@ theme.customerAddresses = (function () {
         var provinceSelector = "AddressProvince_" + formId;
         var containerSelector = "AddressProvinceContainer_" + formId;
 
-        new Shopify.CountryProvinceSelector(countrySelector, provinceSelector, {
-            hideElement: containerSelector,
-        });
+        // new Shopify.CountryProvinceSelector(countrySelector, provinceSelector, {
+        //     hideElement: containerSelector,
+        // });
     });
 
     // Toggle new/edit address forms
@@ -879,9 +879,9 @@ theme.customerAddresses = (function () {
         var $el = $(this);
         var formId = $el.data("form-id");
         var confirmMessage = $el.data("confirm-message");
-        if (confirm(confirmMessage || "Are you sure you wish to delete this address?")) {
-            Shopify.postLink("/account/addresses/" + formId, { parameters: { _method: "delete" } });
-        }
+        // if (confirm(confirmMessage || "Are you sure you wish to delete this address?")) {
+        //     Shopify.postLink("/account/addresses/" + formId, { parameters: { _method: "delete" } });
+        // }
     });
 })();
 
@@ -9241,14 +9241,14 @@ $(document).ready(function () {
     }
 
     // Fullscreen search
-    $(".fullscreen-search").on("click.shopify-search", function (e) {
-        e.preventDefault();
-        $(".popup-search-wrapper").addClass("active");
-    });
+    // $(".fullscreen-search").on("click.shopify-search", function (e) {
+    //     e.preventDefault();
+    //     $(".popup-search-wrapper").addClass("active");
+    // });
 
-    $(".popup-search-wrapper .popup-close").on("click.shopify-search", function () {
-        $(this).closest(".popup-search-wrapper").removeClass("active");
-    });
+    // $(".popup-search-wrapper .popup-close").on("click.shopify-search", function () {
+    //     $(this).closest(".popup-search-wrapper").removeClass("active");
+    // });
 
     // Quantity counter
     $(".quantity-counter .add").on("click.quantity-add", function (e) {
@@ -9262,9 +9262,9 @@ $(document).ready(function () {
         var inCart = $(this).closest(".cart-container").length;
         if (inCart) {
             $counter.addClass("disabled");
-            Shopify.changeItem(id, newQuantity, function () {
-                $counter.removeClass("disabled");
-            });
+            // Shopify.changeItem(id, newQuantity, function () {
+            //     $counter.removeClass("disabled");
+            // });
         }
     });
 
@@ -9279,9 +9279,9 @@ $(document).ready(function () {
         var inCart = $(this).closest(".cart-container").length;
         if (inCart) {
             $counter.addClass("disabled");
-            Shopify.changeItem(id, newQuantity, function () {
-                $counter.removeClass("disabled");
-            });
+            // Shopify.changeItem(id, newQuantity, function () {
+            //     $counter.removeClass("disabled");
+            // });
         }
     });
 
@@ -9298,25 +9298,25 @@ $(document).ready(function () {
         var inCart = $(this).closest(".cart-container").length;
         if (inCart) {
             $counter.addClass("disabled");
-            Shopify.changeItem(id, newQuantity, function (item) {
-                var price = item.total_price.toString();
-                var len = price.length;
-                price = price.substring(0, len - 2) + "." + price.substring(len - 2);
-                $counter.removeClass("disabled");
-                $(".cart-summary .subtotal .price").text("$" + price);
-            });
+            // Shopify.changeItem(id, newQuantity, function (item) {
+            //     var price = item.total_price.toString();
+            //     var len = price.length;
+            //     price = price.substring(0, len - 2) + "." + price.substring(len - 2);
+            //     $counter.removeClass("disabled");
+            //     $(".cart-summary .subtotal .price").text("$" + price);
+            // });
         }
     });
 
-    Shopify.addComment = function (author, email, body) {
-        var params = {
-            type: "POST",
-            url: "/blogs/news/second-blog-post/comments#comment_form",
-            data: `comment[author]=${author}&comment[email]=${email}&comment[body]=${body}`,
-            dataType: "json",
-        };
-        jQuery.ajax(params);
-    };
+    // Shopify.addComment = function (author, email, body) {
+    //     var params = {
+    //         type: "POST",
+    //         url: "/blogs/news/second-blog-post/comments#comment_form",
+    //         data: `comment[author]=${author}&comment[email]=${email}&comment[body]=${body}`,
+    //         dataType: "json",
+    //     };
+    //     jQuery.ajax(params);
+    // };
 
     // go to ratings btn
     $(".go-to-ratings").on("click.go-to-ratings", function (e) {
