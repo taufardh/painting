@@ -238,14 +238,6 @@ slate.Sections = function Sections() {
     this.constructors = {};
     this.instances = [];
 
-    $(document)
-        .on("shopify:section:load", this._onSectionLoad.bind(this))
-        .on("shopify:section:unload", this._onSectionUnload.bind(this))
-        .on("shopify:section:select", this._onSelect.bind(this))
-        .on("shopify:section:deselect", this._onDeselect.bind(this))
-        .on("shopify:section:reorder", this._onReorder.bind(this))
-        .on("shopify:block:select", this._onBlockSelect.bind(this))
-        .on("shopify:block:deselect", this._onBlockDeselect.bind(this));
 };
 
 slate.Sections.prototype = $.extend({}, slate.Sections.prototype, {
@@ -846,23 +838,12 @@ theme.customerAddresses = (function () {
         return;
     }
 
-    // Initialize observers on address selectors, defined in shopify_common.js
-    // if (Shopify) {
-    //     new Shopify.CountryProvinceSelector("AddressCountryNew", "AddressProvinceNew", {
-    //         hideElement: "AddressProvinceContainerNew",
-    //     });
-    // }
-
     // Initialize each edit form's country/province selector
     $(".address-country-option").each(function () {
         var formId = $(this).data("form-id");
         var countrySelector = "AddressCountry_" + formId;
         var provinceSelector = "AddressProvince_" + formId;
         var containerSelector = "AddressProvinceContainer_" + formId;
-
-        // new Shopify.CountryProvinceSelector(countrySelector, provinceSelector, {
-        //     hideElement: containerSelector,
-        // });
     });
 
     // Toggle new/edit address forms
@@ -879,9 +860,7 @@ theme.customerAddresses = (function () {
         var $el = $(this);
         var formId = $el.data("form-id");
         var confirmMessage = $el.data("confirm-message");
-        // if (confirm(confirmMessage || "Are you sure you wish to delete this address?")) {
-        //     Shopify.postLink("/account/addresses/" + formId, { parameters: { _method: "delete" } });
-        // }
+
     });
 })();
 
@@ -9240,15 +9219,6 @@ $(document).ready(function () {
         document.documentElement.className = document.documentElement.className.replace("supports-no-cookies", "supports-cookies");
     }
 
-    // Fullscreen search
-    // $(".fullscreen-search").on("click.shopify-search", function (e) {
-    //     e.preventDefault();
-    //     $(".popup-search-wrapper").addClass("active");
-    // });
-
-    // $(".popup-search-wrapper .popup-close").on("click.shopify-search", function () {
-    //     $(this).closest(".popup-search-wrapper").removeClass("active");
-    // });
 
     // Quantity counter
     $(".quantity-counter .add").on("click.quantity-add", function (e) {
@@ -9262,9 +9232,6 @@ $(document).ready(function () {
         var inCart = $(this).closest(".cart-container").length;
         if (inCart) {
             $counter.addClass("disabled");
-            // Shopify.changeItem(id, newQuantity, function () {
-            //     $counter.removeClass("disabled");
-            // });
         }
     });
 
@@ -9279,9 +9246,6 @@ $(document).ready(function () {
         var inCart = $(this).closest(".cart-container").length;
         if (inCart) {
             $counter.addClass("disabled");
-            // Shopify.changeItem(id, newQuantity, function () {
-            //     $counter.removeClass("disabled");
-            // });
         }
     });
 
@@ -9298,42 +9262,11 @@ $(document).ready(function () {
         var inCart = $(this).closest(".cart-container").length;
         if (inCart) {
             $counter.addClass("disabled");
-            // Shopify.changeItem(id, newQuantity, function (item) {
-            //     var price = item.total_price.toString();
-            //     var len = price.length;
-            //     price = price.substring(0, len - 2) + "." + price.substring(len - 2);
-            //     $counter.removeClass("disabled");
-            //     $(".cart-summary .subtotal .price").text("$" + price);
-            // });
         }
     });
 
-    // Shopify.addComment = function (author, email, body) {
-    //     var params = {
-    //         type: "POST",
-    //         url: "/blogs/news/second-blog-post/comments#comment_form",
-    //         data: `comment[author]=${author}&comment[email]=${email}&comment[body]=${body}`,
-    //         dataType: "json",
-    //     };
-    //     jQuery.ajax(params);
-    // };
 
     // go to ratings btn
-    $(".go-to-ratings").on("click.go-to-ratings", function (e) {
-        var $placeholder = $(e.target).closest(".placeholder");
-        var $reviews = $placeholder.find("#shopify-product-reviews");
-
-        if ($placeholder.length) {
-            var offset = $reviews.offset().top - $placeholder.offset().top;
-
-            $placeholder.animate(
-                {
-                    scrollTop: offset,
-                },
-                1000
-            );
-        }
-    });
 
     // go to comments btn
     $(".go-to-comments").on("click.go-to-comments", function (e) {
