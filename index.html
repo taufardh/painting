@@ -599,16 +599,9 @@ title: "Mahaputera Gallery"
   </div>
   <!-- /.container -->
 
-  <!--
-  <div class="fixed-action-btn">
-      <a id="vid_control" class="btn-floating btn-large materialize-red waves-effect" onclick="VidCtrl();">
-          <i class="large material-icons">play_arrow</i>
-      </a>
-  </div>
-  -->
 
   <div class="fixed-action-btn click-to-toggle">
-    <a class="btn-floating btn-large grey darken-4 pulse">
+    <a id="bg-control" class="btn-floating btn-large grey darken-4 pulse">
       <i class="material-icons">music_note</i>
     </a>
     <ul>
@@ -618,6 +611,14 @@ title: "Mahaputera Gallery"
       <li><a class="btn-floating grey darken-3 waves-effect" onclick="setVolume('up');"><i class="material-icons">volume_up</i></a></li>
       <li><a class="btn-floating grey darken-3 waves-effect" onclick="setVolume('down');"><i class="material-icons">volume_down</i></a></li>
     </ul>
+  </div>
+
+  <!-- Tap Target Structure -->
+  <div class="tap-target" data-activates="bg-control">
+    <div class="tap-target-content">
+      <h5>Title</h5>
+      <p>A bunch of text</p>
+    </div>
   </div>
 
 </body>
@@ -662,6 +663,7 @@ title: "Mahaputera Gallery"
 
         $(document).ready(function(){
             $(".preloader").fadeOut(3000);
+            $('.tap-target').tapTarget('open');
         });
 
      var videoPlaylist = [
