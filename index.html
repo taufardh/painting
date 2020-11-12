@@ -601,15 +601,15 @@ title: "Mahaputera Gallery"
 
 
   <div class="fixed-action-btn click-to-toggle">
-    <a id="bg-control" class="btn-floating btn-large grey darken-4 pulse">
+    <a id="bg-control" class="btn-floating btn-large grey darken-4 pulse" data-position="left" data-delay="50" data-tooltip="Ambience Control">
       <i class="material-icons">music_note</i>
     </a>
     <ul>
-      <li><a id="vid_control" class="btn-floating btn-large red" onclick="playVid();"><i class="material-icons large">play_arrow</i></a></li>
-      <li><a class="btn-floating grey darken-3 waves-effect" onclick="nextVideo();"><i class="material-icons">skip_next</i></a></li>
-      <li><a class="btn-floating grey darken-3 waves-effect" onclick="prevVideo();"><i class="material-icons">skip_previous</i></a></li>
-      <li><a class="btn-floating grey darken-3 waves-effect" onclick="setVolume('up');"><i class="material-icons">volume_up</i></a></li>
-      <li><a class="btn-floating grey darken-3 waves-effect" onclick="setVolume('down');"><i class="material-icons">volume_down</i></a></li>
+      <li><a id="vid_control" class="btn-floating btn-large red" onclick="playVid();" data-position="left" data-delay="50" data-tooltip="Play/Stop Ambience"><i class="material-icons large">play_arrow</i></a></li>
+      <li><a class="btn-floating grey darken-3 waves-effect" onclick="nextVideo();" data-position="left" data-delay="50" data-tooltip="Next Video"><i class="material-icons">skip_next</i></a></li>
+      <li><a class="btn-floating grey darken-3 waves-effect" onclick="prevVideo();" data-position="left" data-delay="50" data-tooltip="Previous Video"><i class="material-icons">skip_previous</i></a></li>
+      <li><a class="btn-floating grey darken-3 waves-effect" onclick="setVolume('up');" data-position="left" data-delay="50" data-tooltip="Volume Up"><i class="material-icons">volume_up</i></a></li>
+      <li><a class="btn-floating grey darken-3 waves-effect" onclick="setVolume('down');" data-position="left" data-delay="50" data-tooltip="Volume Down"><i class="material-icons">volume_down</i></a></li>
     </ul>
   </div>
 
