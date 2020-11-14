@@ -23,6 +23,13 @@ title: "Gallery"
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Fillscreen Style" />
     <meta name="twitter:description" content="Materialize Shopify Themes" />
+
+    <style>
+        .page-footer {
+            margin-top: 20px;
+            padding-top: 0px !important;
+        }
+    </style>
 </head>
 
 <link href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css' rel='stylesheet' type='text/css'>
@@ -180,7 +187,7 @@ title: "Gallery"
     </nav>
 
     <div class="container">
-        <div class="carousel carousel-slider center">
+        <div id="painting" class="carousel carousel-slider center">
             <div class="carousel-fixed-item center">
               <a class="btn waves-effect white grey-text darken-text-2">button</a>
             </div>
@@ -201,7 +208,7 @@ title: "Gallery"
               <p class="white-text">This is your fourth panel</p>
             </div>
         </div>
-        <div class="carousel carousel-slider center">
+        <div id="photo" class="carousel carousel-slider center">
             <div class="carousel-fixed-item center">
               <a class="btn waves-effect white grey-text darken-text-2">button</a>
             </div>
@@ -222,7 +229,7 @@ title: "Gallery"
               <p class="white-text">This is your fourth panel</p>
             </div>
         </div>
-        <div class="carousel carousel-slider center">
+        <div id="market" class="carousel carousel-slider center">
             <div class="carousel-fixed-item center">
               <a class="btn waves-effect white grey-text darken-text-2">button</a>
             </div>
@@ -270,11 +277,13 @@ title: "Gallery"
   <!--<script src="{{ "/assets/js/market.theme.js" | prepend: site.baseurl }}"></script>-->
   <script>
     $(document).ready(function(){
-        $('.carousel').carousel({indicators: true});
-        $('.carousel.carousel-slider').carousel({
-            fullWidth: true,
-            indicators: true
-        });
+        $('#painting').carousel({fullWidth: true, indicators: true});
+        $('#photo').carousel({fullWidth: true, indicators: true});
+        $('#market').carousel({fullWidth: true, indicators: true});
+        // $('.carousel.carousel-slider').carousel({
+        //     fullWidth: true,
+        //     indicators: true
+        // });
     });
   </script>
 
