@@ -364,7 +364,7 @@ nav .categories-wrapper .categories-container .categories > li > a {
     margin: 30px 0 20px -35px;
     width: calc(100% + 70px);
 }
-.gallery-body .carousel-wrapper .t {
+.gallery-body .carousel-wrapper .carousel {
     height: 200px;
 }
 .gallery-body .carousel-wrapper .carousel-item {
@@ -372,13 +372,13 @@ nav .categories-wrapper .categories-container .categories > li > a {
     width: 300px;
     height: 200px;
 }
-.nav-header .t {
+.nav-header .carousel {
     height: 100%;
 }
-.nav-header .t .indicators {
+.nav-header .carousel .indicators {
     height: 56px;
 }
-.nav-header .t .indicators .indicator-item {
+.nav-header .carousel .indicators .indicator-item {
     float: none;
 }
 .nav-header .carousel .carousel-item,
