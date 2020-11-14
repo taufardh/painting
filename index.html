@@ -268,7 +268,15 @@ title: "Gallery"
 
   <!--<script src="{{ "/assets/js/market.vendor.min.js" | prepend: site.baseurl }}"></script>-->
   <!--<script src="{{ "/assets/js/market.theme.js" | prepend: site.baseurl }}"></script>-->
-  
+  <script>
+    $(document).ready(function(){
+        $('.carousel').carousel();
+        $('.carousel.carousel-slider').carousel({
+            fullWidth: true,
+            indicators: true
+        });
+    });
+  </script>
 
 </body>
 </html>
