@@ -17,10 +17,401 @@ title: "Gallery Painting"
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
 
     <!-- Stylesheet -->
-    <link href="{{ "/assets/css/gallery-materialize.min.opt.css" | prepend: site.baseurl }}" rel="stylesheet">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css' rel='stylesheet' type='text/css'>
+    
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+html,
+body {
+    height: 100%;
+}
+body {
+    background-color: #f4f4f4;
+    font-family: "Lato", sans-serif;
+}
+ul {
+    margin: 0;
+}
+.ef {
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin-bottom: 30px;
+    color: #666;
+}
+.section {
+    padding: 1.5rem 0;
+}
+.valign-wrapper {
+    height: 100%;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.dropdown-button i.right {
+    margin-left: 5px;
+}
+nav {
+    position: relative;
+    top: 0;
+    transition: background-color 0.3s, opacity 0.2s, visibility 0s;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+nav.ed {
+    transition: background-color 0.3s, opacity 0.2s, visibility 0s 0.2s;
+    opacity: 0;
+    visibility: hidden;
+}
+nav.nav-full-header {
+    height: 100%;
+}
+nav.nav-full-header .nav-header {
+    height: calc(100% - 128px);
+}
+nav.nav-full-header ~ .nav-categories {
+    top: -64px;
+}
+nav ul:not(.indicators) li.active {
+    position: relative;
+    background-color: transparent;
+}
+nav ul:not(.indicators) li.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: #fff;
+}
+nav .nav-background {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.1;
+}
+nav .nav-background img,
+nav .nav-background .ea {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    max-width: 100%;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    transition: opacity 0.7s;
+}
+nav .nav-background img.active,
+nav .nav-background .ea.active {
+    opacity: 1;
+}
+nav .nav-background .ea {
+    top: 0;
+    bottom: 0;
+    -webkit-transform: none;
+    transform: none;
+    background-repeat: repeat;
+}
+nav .nav-header {
+    clear: both;
+    padding: 40px 0;
+}
+nav .nav-header h1 {
+    font-size: 56px;
+    font-weight: 600;
+}
+nav .nav-header .ge {
+    display: block;
+    margin: -40px 0 40px 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+nav .categories-wrapper {
+    background-color: inherit;
+    height: 64px;
+}
+nav .categories-wrapper .categories-container {
+    background-color: inherit;
+    white-space: nowrap;
+    overflow: auto;
+}
+nav .categories-wrapper .categories-container.pinned {
+    width: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+nav .categories-wrapper .categories-container .categories > li {
+    float: none;
+    display: inline-block;
+}
+.b {
+    position: relative;
+}
+.b.gallery-collection .gallery-item {
+    margin-bottom: 1px;
+}
+.b .gallery-item {
+    margin-bottom: 1.5rem;
+}
+.b .gallery-item .h {
+    margin: 0;
+}
+.b .en .gallery-curve-wrapper {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.b .en .gallery-cover {
+    height: 100%;
+    width: auto;
+    max-width: 50%;
+}
+.b .en .gallery-header {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+.b .gallery-expand.active {
+    z-index: 9;
+}
+.b .gallery-expand.active .gallery-curve-wrapper {
+    padding-top: 64px;
+    cursor: default;
+    box-shadow: none;
+}
+.b .gallery-expand.active .gallery-curve-wrapper .gallery-cover {
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.b .gallery-expand[data-fillscreen="true"] .gallery-curve-wrapper .gallery-header,
+.b .gallery-expand[data-fillscreen="true"] .gallery-curve-wrapper .gallery-body,
+.b .gallery-expand[data-fillscreen="true"] .gallery-curve-wrapper .gallery-action,
+.b .gallery-expand[data-fillscreen="true"] .gallery-curve-wrapper .gallery-cover {
+    z-index: 1;
+}
+.b .gallery-expand[data-fillscreen="true"] .gallery-curve-wrapper .gallery-cover {
+    box-shadow: none;
+    pointer-events: none;
+}
+.b .gallery-expand[data-fillscreen="true"] .gallery-curve-wrapper .gallery-cover.ep {
+    opacity: 0;
+}
+.b .gallery-expand[data-fillscreen="true"] .gallery-curve-wrapper .gallery-cover.dh {
+    margin: 0;
+}
+.b .gallery-expand[data-fillscreen="true"] .gallery-curve-wrapper .gallery-cover .gradient {
+    background: transparent;
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    bottom: 0;
+}
+.b .gallery-expand .gallery-curve-wrapper {
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+.b .gallery-cover {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    transition: top 0.5s;
+    z-index: 2;
+}
+.b .gallery-cover.dh {
+    margin-left: 15%;
+}
+.b .gallery-cover.dh img {
+    min-width: 100%;
+}
+.b .gallery-cover img {
+    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.1);
+    width: auto;
+    display: block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.b .gallery-header {
+    position: relative;
+    padding: 20px;
+    background-color: #fff;
+    color: #444;
+}
+.b .gallery-header h1,
+.b .gallery-header h2,
+.b .gallery-header h3,
+.b .gallery-header h4,
+.b .gallery-header h5 {
+    margin-top: 0;
+}
+.b .gallery-header p {
+    color: #777;
+}
+.b .gallery-body {
+    text-align: left;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70%;
+    margin: 0 15%;
+    background-color: #fff;
+    z-index: 1;
+}
+.b .gallery-body .title-wrapper {
+    margin-bottom: 30px;
+}
+.b .gallery-body .title-wrapper h1,
+.b .gallery-body .title-wrapper h2,
+.b .gallery-body .title-wrapper h3,
+.b .gallery-body .title-wrapper h4,
+.b .gallery-body .title-wrapper h5 {
+    margin: 0 0 10px 0;
+}
+.b .gallery-body .title-wrapper .gk {
+    color: #777;
+}
+.b .gallery-body .fi {
+    font-size: 22px;
+    font-weight: 300;
+}
+.b .gallery-action {
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    right: 15%;
+    z-index: 2;
+}
+.b .gallery-action .g,
+.b .gallery-action .btn-large {
+    margin-left: 10px;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    transition: none;
+}
+.container {
+    max-width: none;
+}
+.b .gallery-action .g.active,
+.b .gallery-action .active.btn-large {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    transition: box-shadow 0.3s, -webkit-transform 0.4s cubic-bezier(0.53, 0.01, 0.36, 1.63);
+    transition: transform 0.4s cubic-bezier(0.53, 0.01, 0.36, 1.63), box-shadow 0.3s;
+    transition: transform 0.4s cubic-bezier(0.53, 0.01, 0.36, 1.63), box-shadow 0.3s, -webkit-transform 0.4s cubic-bezier(0.53, 0.01, 0.36, 1.63);
+}
+#placeholder-navbar {
+    position: fixed;
+    top: 0;
+    z-index: 3;
+    transition: background-color 0.3s;
+}
+#placeholder-navbar .back-btn {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+#placeholder-navbar .back-btn i {
+    float: left;
+    margin-right: 10px;
+}
+#placeholder-overlay {
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fafafa;
+    opacity: 0;
+    transition: opacity 0.3s;
+    will-change: opacity;
+}
+#placeholder-overlay.et {
+    opacity: 1;
+}
+#placeholder-overlay:hover {
+    opacity: 0.9;
+    transition: opacity 0.6s;
+}
+.gallery-body .carousel-wrapper {
+    margin: 30px 0 20px -35px;
+    width: calc(100% + 70px);
+}
+.gallery-body .carousel-wrapper .t {
+    height: 200px;
+}
+.gallery-body .carousel-wrapper .carousel-item {
+    opacity: 1 !important;
+    width: 300px;
+    height: 200px;
+}
+.nav-header .t {
+    height: 100%;
+}
+.nav-header .t .indicators {
+    height: 56px;
+}
+.nav-header .t .indicators .indicator-item {
+    float: none;
+}
+.nav-header .carousel .carousel-item,
+nav .nav-header {
+    word-break: break-word;
+}
+@media only screen and (max-width: 992px) {
+    .b .gallery-cover.dh {
+        margin: 0;
+    }
+    .b .gallery-body {
+        width: 100%;
+        margin: 0;
+    }
+    .b .gallery-action {
+        right: 0;
+    }
+    .gallery-body .carousel-wrapper {
+        margin: 30px 0 20px -15px;
+        width: calc(100% + 30px);
+    }
+}
+@media only screen and (max-width: 600px) {
+    nav.nav-full-header .nav-header {
+        height: calc(100% - 112px);
+    }
+    nav.nav-full-header ~ .nav-categories {
+        top: -56px;
+    }
+    nav .categories-wrapper {
+        height: 56px;
+    }
+    .b .gallery-expand.active .gallery-curve-wrapper {
+        padding-top: 56px;
+    }
+    nav .nav-header h1 {
+        font-size: 40px;
+    }
+}
 
+</style>
 </head>
 
   <body>
@@ -28,17 +419,17 @@ title: "Gallery Painting"
     <!-- Navbar and Header -->
     <nav class="nav-extended">
       <div class="nav-background">
-        <div class="ea k" style="background-image: url('//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/icon-seamless.png?v=16169594983224640439');"></div>
+        <div class="ea active" style="background-image: url('//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/icon-seamless.png?v=16169594983224640439');"></div>
       </div>
-      <div class="nav-wrapper db">
+      <div class="nav-wrapper container">
         <a href="/pages/demo" class="brand-logo"><i class="material-icons">camera</i>Gallery</a>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-        <ul class="bt hide-on-med-and-down">
-          <li class="k"><a href="/pages/demo">Gallery</a></li>
+        <ul class="right hide-on-med-and-down">
+          <li class="active"><a href="/pages/demo">Gallery</a></li>
           <li><a href="/pages/dark-theme">Dark Theme</a></li>
           <li><a href="/pages/blog">Blog</a></li>
           <li><a href="/pages/docs">Docs</a></li>
-          <li><a class='dropdown-button' href='#' data-activates='feature-dropdown' data-belowOrigin="true" data-constrainWidth="false">Features<i class="material-icons bt">arrow_drop_down</i></a></li>
+          <li><a class='dropdown-button' href='#' data-activates='feature-dropdown' data-belowOrigin="true" data-constrainWidth="false">Features<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
         <!-- Dropdown Structure -->
         <ul id='feature-dropdown' class='dropdown-content'>
@@ -47,17 +438,17 @@ title: "Gallery Painting"
           <li><a href="/pages/no-image">No Image Expand</a></li>
         </ul>
 
-        <div class="nav-header de">
+        <div class="nav-header center">
           <h1>I MAKE THINGS</h1>
           <div class="ge">Portfolio</div>
         </div>
       </div>
 
       <!-- Fixed Masonry Filters -->
-      <div class="categories-wrapper af lighten-1">
+      <div class="categories-wrapper purple lighten-1">
         <div class="categories-container">
-          <ul class="categories db">
-            <li class="k"><a href="#all">All</a></li>
+          <ul class="categories container">
+            <li class="active"><a href="#all">All</a></li>
             <li><a href="#polygon">Polygon</a></li>
             <li><a href="#bigbang">Big Bang</a></li>
             <li><a href="#sacred">Sacred Geometry</a></li>
@@ -66,7 +457,7 @@ title: "Gallery Painting"
       </div>
     </nav>
     <ul class="side-nav" id="nav-mobile">
-      <li class="k"><a href="/pages/demo"><i class="material-icons">camera</i>Gallery</a></li>
+      <li class="active"><a href="/pages/demo"><i class="material-icons">camera</i>Gallery</a></li>
       <li><a href="/pages/dark-theme"><i class="material-icons">brightness_3</i>Dark Theme</a></li>
       <li><a href="/pages/blog"><i class="material-icons">edit</i>Blog</a></li>
       <li><a href="/pages/docs"><i class="material-icons">school</i>Docs</a></li>
@@ -76,10 +467,10 @@ title: "Gallery Painting"
     </ul>
 
     <!-- Gallery -->
-    <div id="portfolio" class="cx gray">
-      <div class="db">
-        <div class="b e">
-          <div class="d hx hf gu gallery-item gallery-expand ce polygon">
+    <div id="portfolio" class="section gray">
+      <div class="container">
+        <div class="b row">
+          <div class="col l4 m6 s12 gallery-item gallery-expand ce polygon">
             <div class="gallery-curve-wrapper">
               <a class="gallery-cover gray">
                 <img class="responsive-img" src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/geometric-aquamarine.jpg?v=6672170126572450214" alt="placeholder" crossOrigin="anonymous">
@@ -112,7 +503,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
               </div>
             </div>
           </div>
-          <div class="d hx hf gu gallery-item gallery-expand ce polygon">
+          <div class="col l4 m6 s12 gallery-item gallery-expand ce polygon">
             <div class="gallery-curve-wrapper">
               <a class="gallery-cover gray">
                 <img src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/geometric-sun.jpg?v=5328726480767926026" alt="placeholder" crossOrigin="anonymous">
@@ -145,7 +536,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
               </div>
             </div>
           </div>
-          <div class="d hx hf gu gallery-item gallery-expand ce bigbang">
+          <div class="col l4 m6 s12 gallery-item gallery-expand ce bigbang">
             <div class="gallery-curve-wrapper">
               <a class="gallery-cover gray">
                 <img class="responsive-img" src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/bigbang1.png?v=16037008195156379711" alt="placeholder" crossOrigin="anonymous">
@@ -178,7 +569,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
               </div>
             </div>
           </div>
-          <div class="d hx hf gu gallery-item gallery-expand ce polygon">
+          <div class="col l4 m6 s12 gallery-item gallery-expand ce polygon">
             <div class="gallery-curve-wrapper">
               <a class="gallery-cover gray">
                 <img src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/geometric-maze.jpg?v=14238163633299520814" alt="placeholder" crossOrigin="anonymous">
@@ -211,7 +602,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
               </div>
             </div>
           </div>
-          <div class="d hx hf gu gallery-item gallery-expand ce polygon">
+          <div class="col l4 m6 s12 gallery-item gallery-expand ce polygon">
             <div class="gallery-curve-wrapper">
               <a class="gallery-cover gray">
                 <img src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/geometric-ice.jpg?v=10474404842800237238" alt="placeholder" crossOrigin="anonymous">
@@ -244,7 +635,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
               </div>
             </div>
           </div>
-          <div class="d hx hf gu gallery-item gallery-expand ce polygon">
+          <div class="col l4 m6 s12 gallery-item gallery-expand ce polygon">
             <div class="gallery-curve-wrapper">
               <a class="gallery-cover gray">
                 <img src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/geometric-cave.jpg?v=13127282243134125143" alt="placeholder" crossOrigin="anonymous">
@@ -277,7 +668,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
               </div>
             </div>
           </div>
-          <div class="d hx hf gu gallery-item gallery-expand ce polygon">
+          <div class="col l4 m6 s12 gallery-item gallery-expand ce polygon">
             <div class="gallery-curve-wrapper">
               <a class="gallery-cover gray">
                 <img src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/geometric-grapefruit.jpg?v=4070483676604165442" alt="placeholder" crossOrigin="anonymous">
@@ -312,7 +703,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
               </div>
             </div>
           </div>
-          <div class="d hx hf gu gallery-item gallery-expand ce bigbang">
+          <div class="col l4 m6 s12 gallery-item gallery-expand ce bigbang">
             <div class="gallery-curve-wrapper">
               <a class="gallery-cover gray">
                 <img class="responsive-img" src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/bigbang2.jpg?v=11148770704246014535" alt="placeholder" crossOrigin="anonymous">
@@ -345,7 +736,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
               </div>
             </div>
           </div>
-          <div class="d hx hf gu gallery-item gallery-expand ce bigbang">
+          <div class="col l4 m6 s12 gallery-item gallery-expand ce bigbang">
             <div class="gallery-curve-wrapper">
               <a class="gallery-cover gray">
                 <img class="responsive-img" src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/bigbang3.jpg?v=15777775850613915645" alt="placeholder" crossOrigin="anonymous">
@@ -379,7 +770,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
             </div>
           </div>
 
-          <div class="d hx hf gu gallery-item gallery-expand ce sacred">
+          <div class="col l4 m6 s12 gallery-item gallery-expand ce sacred">
             <div class="gallery-curve-wrapper">
               <a class="gallery-cover gray">
                 <img class="responsive-img" src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/sacredgeometry1.jpg?v=5149466179867945445" alt="placeholder" crossOrigin="anonymous">
@@ -413,7 +804,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
             </div>
           </div>
 
-          <div class="d hx hf gu gallery-item gallery-expand ce sacred">
+          <div class="col l4 m6 s12 gallery-item gallery-expand ce sacred">
             <div class="gallery-curve-wrapper">
               <a class="gallery-cover gray">
                 <img class="responsive-img" src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/sacredgeometry2.jpg?v=18371100130883873604" alt="placeholder" crossOrigin="anonymous">
@@ -447,7 +838,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
             </div>
           </div>
 
-          <div class="d hx hf gu gallery-item gallery-expand ce sacred">
+          <div class="col l4 m6 s12 gallery-item gallery-expand ce sacred">
             <div class="gallery-curve-wrapper">
               <a class="gallery-cover gray">
                 <img class="responsive-img" src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/sacredgeometry3.jpg?v=5364806459563624101" alt="placeholder" crossOrigin="anonymous">
