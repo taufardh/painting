@@ -23,6 +23,49 @@ title: "Gallery Photo"
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
+.gallery-item.active .gallery-overlay {
+    display: none;
+}
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: background-color 0.2s, opacity 0.2s;
+}
+.gallery-overlay:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 1;
+}
+.gallery-overlay:hover .overlay-header {
+    transform: scale(1);
+}
+.gallery-overlay .overlay-header {
+    font-size: 36px;
+    text-align: center;
+    color: #fff;
+    transform: scale(0.5);
+    transition: transform 0.2s;
+}
+.gallery-overlay .overlay-header .price,
+.gallery-overlay .overlay-header .spr-badge {
+    font-size: 14px;
+    display: block;
+}
+.gallery-overlay .overlay-header .spr-badge {
+    margin-top: 5px;
+}
+body:not(.gallery-dark-theme) .col .gallery-overlay {
+    left: 0.75rem;
+    right: 0.75rem;
+}
+
   .video-background {
   background: #000;
   top: 0; right: 0; bottom: 0; left: 0;
@@ -213,6 +256,11 @@ title: "Gallery Photo"
                   <a class="gallery-cover gray">
                       <img class="responsive-img" src="https://i.postimg.cc/KjpfLFQx/DSC00031.jpg" alt="placeholder" crossorigin="anonymous" />
                   </a>
+                    <div class="gallery-overlay">
+                        <div class="overlay-header">
+                            <div class="overlay-title">Aquamarine</div>
+                        </div>
+                    </div>
                   <div class="gallery-body">
                       <div class="title-wrapper">
                           <h3>Aquamarine</h3>
