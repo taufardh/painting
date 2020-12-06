@@ -26,20 +26,10 @@
       <div class="categories-container">
         <ul class="categories container">
           <li class="active"><a href="#all">All</a></li>
-          <!-- <li><a href="#polygon">Polygon</a></li>
+          <li><a href="#polygon">Polygon</a></li>
           <li><a href="#bigbang">Big Bang</a></li>
-          <li><a href="#sacred">Sacred Geometry</a></li> -->
-            {% assign category_list = site.categories %}
-                {% if category_list.first[0] == null %}
-                    {% for category in category_list %}
-                        <li><a href="#{{ category | slugify }}">{{ category }}</a></li>
-                    {% endfor %}
-                {% else %}
-                    {% for category in category_list %}
-                        <li><a href="#{{ category[0] | slugify }}">{{ category[0] }}</a></li>
-                    {% endfor %}
-                {% endif %}
-            {% assign category_list = null %}
+          <li><a href="#sacred">Sacred Geometry</a></li>
+            
         </ul>
       </div>
     </div>
