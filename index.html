@@ -9,8 +9,8 @@ title: "Gallery Painting"
     <div class="b row">
       {% for post in site.posts %}
         <div class="col l4 m6 s12 gallery-item gallery-expand ce 
-        {% for tag in post.tags  %}
-          {{ tag }} ' '
+        {% for category in post.categories  %}
+          {{ category }} ' '
         {% endfor %}
         ">
           <div class="gallery-curve-wrapper">
@@ -23,11 +23,11 @@ title: "Gallery Painting"
             <div class="gallery-body">
               <div class="title-wrapper">
                 <h3>{{ post.title }}</h3>
-                <span class="gj">{{ post.artist }} - <i class="material-icons">today </i> {% include date.html date=post.date %}</span>
+                <span class="gj">{{ post.artist }} - {% include date.html date=post.date %}</span>
               </div>
               <p class="fi">{{ post.description }}</p>
               <br>
-              <p class="fi"><i class="material-icons">today </i> {% include date.html date=post.date %}</p>
+              <p class="fi"> {% include date.html date=post.date %}</p>
               <!--<p class="fi"></p>-->
             </div>
             <div class="gallery-action">
