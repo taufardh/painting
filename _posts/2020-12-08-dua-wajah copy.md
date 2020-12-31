@@ -1,0 +1,9 @@
+---
+title: "Dua Wajah"
+date: 2020-12-06 18:21:26
+description: 'Put your description here.'
+image: 'https://i.postimg.cc/6TxwqgsL/IMG-20201114-150708.jpg'
+categories: kubisme
+artist: 'Gallery teplok.id'
+instagram: 'dian_djoyo'
+---
