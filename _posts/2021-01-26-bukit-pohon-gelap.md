@@ -1,9 +1,9 @@
 ---
-title: "Foot Step"
+title: "Bukit, Pohon, dan Gelap"
 date: 2021-01-26 22:21:26
-description: 'Explore the World.'
-image: 'https://i.postimg.cc/vmZ1Ggt8/IMG-20201114-175419.jpg'
-categories: kubisme
+description: 'Dalam kegelapan dan sinar rembulan.'
+image: 'https://i.postimg.cc/N0CKFsd6/IMG-20201114-175438.jpg'
+categories: fauvisme
 artist: 'Gallery teplok.id'
 instagram: 'dian_djoyo'
 ---
