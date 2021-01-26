@@ -1,11 +1,9 @@
 ---
-title: "Garden of Haures"
-date: 2020-12-06 18:21:26
-description: 'Put your description here.'
-image: 'https://i.postimg.cc/TYn50XPx/IMG-20201114-150647.jpg'
+title: "Coffee Fireworks"
+date: 2021-01-26 22:21:26
+description: 'Happy New Year.'
+image: 'https://i.postimg.cc/8zHJ8BWn/IMG-20201114-175402.jpg'
 categories: abstrak
-artist: 'Mahaputera'
-facebook: 'taufardh'
-instagram: 'taufardh'
-twitter: 'taufardh'
+artist: 'Gallery teplok.id'
+instagram: 'dian_djoyo'
 ---
