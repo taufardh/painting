@@ -11,19 +11,19 @@ title: "Gallery Painting"
         <div class="col l4 m6 s12 gallery-item gallery-expand ce {{ post.categories }}">
           <div class="gallery-curve-wrapper">
             <a class="gallery-cover gray">
-              <img class="responsive-img" id="image-{{ post.post_id }}" src="{{ post.image }}" alt="placeholder" crossOrigin="anonymous">
+              <img class="responsive-img" id="image-{{ post.id_post }}" src="{{ post.image }}" alt="placeholder" crossOrigin="anonymous">
             </a>
             <div class="gallery-header">
-              <span id="title-{{ post.post_id }}">{{ post.title }}</span>
+              <span id="title-{{ post.id_post }}">{{ post.title }}</span>
             </div>
             <div class="gallery-body">
               <div class="title-wrapper">
                 <h3>{{ post.title }}</h3>
-                <span class="gj" id="artist-categories-{{ post.post_id }}">{{ post.artist }} - {{ post.categories }}</span>
+                <span class="gj" id="artist-categories-{{ post.id_post }}">{{ post.artist }} - {{ post.categories }}</span>
               </div>
-              <p class="fi" id="description-{{ post.post_id }}">{{ post.description }}</p>
+              <p class="fi" id="description-{{ post.id_post }}">{{ post.description }}</p>
               <br>
-              <p class="fi" id="date-{{ post.post_id }}">{% include date.html date=post.date %}</p>
+              <p class="fi" id="date-{{ post.id_post }}">{% include date.html date=post.date %}</p>
               <!--<p class="fi"></p>-->
             </div>
             <div class="gallery-action">
