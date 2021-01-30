@@ -6,24 +6,24 @@ title: "Gallery Painting"
 <!-- Gallery -->
 <div id="portfolio" class="section gray">
   <div class="container">
-    <div class="b row" id="list-post" style="display: none;">
+    <div class="b row" id="list-post">
       {% for post in site.posts %}
         <div class="col l4 m6 s12 gallery-item gallery-expand ce {{ post.categories }}">
           <div class="gallery-curve-wrapper">
             <a class="gallery-cover gray">
-              <img class="responsive-img" id="image-{{ post.id_post }}" src="{{ post.image }}" alt="placeholder" crossOrigin="anonymous">
+              <img class="responsive-img" src="{{ post.image }}" alt="placeholder" crossOrigin="anonymous">
             </a>
             <div class="gallery-header">
-              <span id="title-{{ post.id_post }}">{{ post.title }}</span>
+              <span>{{ post.title }}</span>
             </div>
             <div class="gallery-body">
               <div class="title-wrapper">
                 <h3>{{ post.title }}</h3>
-                <span class="gj" id="artist-categories-{{ post.id_post }}">{{ post.artist }} - {{ post.categories }}</span>
+                <span class="gj">{{ post.artist }} - {{ post.categories }}</span>
               </div>
-              <p class="fi" id="description-{{ post.id_post }}">{{ post.description }}</p>
+              <p class="fi">{{ post.description }}</p>
               <br>
-              <p class="fi" id="date-{{ post.id_post }}">{% include date.html date=post.date %}</p>
+              <p class="fi">{% include date.html date=post.date %}</p>
               <!--<p class="fi"></p>-->
             </div>
             <div class="gallery-action">
@@ -38,3 +38,13 @@ title: "Gallery Painting"
   </div>
 
 </div><!-- /.container -->
+<div style="display: none;">
+  {% for post in site.posts %}
+    <div id="image-{{ post.id_post }}" data="{{ post.image }}"></div>
+    <div id="title-{{ post.id_post }}" data="{{ post.title }}"></div>
+    <div id="artist-{{ post.id_post }}" data="{{ post.artist }}"></div>
+    <div id="category-{{ post.id_post }}" data="{{ post.categories }}"></div>
+    <div id="description-{{ post.id_post }}" data="{{ post.description }}"></div>
+    <div id="date-{{ post.id_post }}" data="{{ post.date }}"></div>
+  {% endfor %}
+</div>

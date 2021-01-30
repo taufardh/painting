@@ -15,11 +15,12 @@
         $(".preloader").fadeOut(3000);
         var total_post = $('#total-post').text();
         for(i=1;i<=parseInt(total_post);i++){
-          temp_post["image"] = $('#image-'+i).attr('src');
-          temp_post["title"] = $('#title-'+i).text();
-          temp_post["artist-category"] = $('#artist-categories-'+i).text();
-          temp_post["description"] = $('#description-'+i).text();
-          temp_post["date"] = $('#date-'+i).text();
+          temp_post["image"] = $('#image-'+i).attr('data');
+          temp_post["title"] = $('#title-'+i).attr('data');
+          temp_post["artist"] = $('#artist-'+i).attr('data');
+          temp_post["category"] = $('#category-'+i).attr('data');
+          temp_post["description"] = $('#description-'+i).attr('data');
+          temp_post["date"] = $('#date-'+i).attr('data');
           post[i] = temp_post;
         }
         console.log(post);
