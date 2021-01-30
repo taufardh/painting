@@ -10,9 +10,13 @@
       //   manipulate[0].innerHTML = "{{ page.title }}";
       // });
       $(document).ready(function(){
+        var post = [];
         $(".preloader").fadeOut(3000);
         var total_post = $('#total-post').text();
-        console.log(total_post);
+        for(i=1;i<=parseInt(total_post);i++){
+          post[i]['images'] = $('#image-'+i).attr('src');
+        }
+        console.log(post);
       })
     </script>
   </body>
