@@ -6,9 +6,9 @@ title: "Gallery Painting"
 <!-- Gallery -->
 <div id="portfolio" class="section gray">
   <div class="container">
-    <div class="b row">
+    <div class="b row inf-scroll">
       {% for post in site.posts %}
-        <div class="col l4 m6 s12 gallery-item gallery-expand ce {{ post.categories }}">
+        <div class="col l4 m6 s12 gallery-item ele-scroll gallery-expand ce {{ post.categories }}">
           <div class="gallery-curve-wrapper">
             <a class="gallery-cover gray">
               <img class="responsive-img" src="{{ post.image }}" alt="placeholder" crossOrigin="anonymous">
