@@ -1,4 +1,5 @@
 ---
+id_post: 7
 title: "Colorful Nature"
 date: 2021-01-26 18:21:26
 description: 'Aura life inside living things.'

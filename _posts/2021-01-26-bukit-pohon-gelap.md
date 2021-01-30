@@ -1,4 +1,5 @@
 ---
+id_post: 3
 title: "Bukit, Pohon, dan Gelap"
 date: 2021-01-26 22:21:26
 description: 'Dalam kegelapan dan sinar rembulan.'

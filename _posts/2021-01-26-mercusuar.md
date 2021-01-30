@@ -1,4 +1,5 @@
 ---
+id_post: 12
 title: "Mercusuar"
 date: 2021-01-26 22:21:26
 description: 'Mercusuar menyinari dingin samudera.'
