@@ -10,11 +10,11 @@
       //   manipulate[0].innerHTML = "{{ page.title }}";
       // });
       $(document).ready(function(){
-        var post = [];
+        var post = {};
         $(".preloader").fadeOut(3000);
         var total_post = $('#total-post').text();
         for(i=1;i<=parseInt(total_post);i++){
-          post[i]['images'] = $('#image-'+i).attr('src');
+          post[i]["images"] = $('#image-'+i).attr('src');
         }
         console.log(post);
       })
