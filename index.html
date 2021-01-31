@@ -11,7 +11,7 @@ title: "Gallery Painting"
         <div class="col l4 m6 s12 gallery-item gallery-expand ce {{ post.categories }}">
           <div class="gallery-curve-wrapper">
             <a class="gallery-cover gray">
-              <img class="responsive-img" src="{{ post.image }}" alt="placeholder" crossOrigin="anonymous">
+              <img class="responsive-img" id="image-trigger-{{ post.id_post }}" src="{{ post.image }}" alt="placeholder" crossOrigin="anonymous">
             </a>
             <div class="gallery-header">
               <span>{{ post.title }} - {{ post.id_post }}</span>
