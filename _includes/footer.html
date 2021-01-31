@@ -40,15 +40,15 @@
           var jndex = 0;
           for(ind=div;ind>0;ind--){
             // var fire_function = '{selector: "#image-trigger-'+(int_total_post - (post_per_load*div)+1)+'", offset: 50, callback: "show_post('+(int_total_post - (post_per_load*div))+','+int_total_post+');" }';
-            var fire_function = '{selector: "#image-trigger-'+(int_total_post - (post_per_load*div)+1)+'", offset: 50, callback: "Materialize.toast("This is our ScrollFire Demo!", 1500 )" }';
-            options[jndex] = fire_function;
+            // var fire_function = '{selector: "#image-trigger-'+(int_total_post - (post_per_load*div)+1)+'", offset: 50, callback: "Materialize.toast("This is our ScrollFire Demo!", 1500 )" }';
+            // options[jndex] = fire_function;
             jndex++;
           }
 
-          // var options = [
-          //   {selector: '#image-4', offset: 50, callback: 'Materialize.toast("This is our ScrollFire Demo!", 1500 )' },
-          //   {selector: '#image-10', offset: 205, callback: 'Materialize.toast("Please continue scrolling!", 1500 )' }
-          // ];
+          var options = [
+            {selector: '#image-trigger-6', offset: 50, callback: 'Materialize.toast("This is our ScrollFire Demo!", 1500 )' },
+            // {selector: '#image-10', offset: 205, callback: 'Materialize.toast("Please continue scrolling!", 1500 )' }
+          ];
           console.log(options);
           Materialize.scrollFire(options);
         }
