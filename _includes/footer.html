@@ -9,12 +9,16 @@
       //   manipulate = document.getElementById("title");
       //   manipulate[0].innerHTML = "{{ page.title }}";
       // });
+
+      var post_per_load = 9;
+
       $(document).ready(function(){
         var post = new Array();
         var temp_post = new Object();
+        var int_total_post = parseInt(total_post);
         $(".preloader").fadeOut(3000);
         var total_post = $('#total-post').text();
-        for(i=1;i<=parseInt(total_post);i++){
+        for(i=1;i<= int_total_post;i++){
           temp_post["image"] = $('#image-'+i).attr('data');
           temp_post["title"] = $('#title-'+i).attr('data');
           temp_post["artist"] = $('#artist-'+i).attr('data');
@@ -25,12 +29,62 @@
         }
         console.log(post);
 
-        var options = [
-          {selector: '#image-4', offset: 50, callback: 'Materialize.toast("This is our ScrollFire Demo!", 1500 )' },
-          {selector: '#image-10', offset: 205, callback: 'Materialize.toast("Please continue scrolling!", 1500 )' }
-        ];
-        Materialize.scrollFire(options);
-      })
+        if(int_total_post > post_per_load){
+          var options = [];
+          var div = Math.floor(int_total_post/post_per_load);
+          var rest = int_total_post%post_per_load;
+          for(ind=0;ind<div;ind++){
+            var fire_function = '{selector: "#image-'+ind*post_per_load+'", offset: 50, callback: "show_post('+ind*post_per_load+','+int_total_post+');" }';
+            options[ind] = fire_function;
+          }
+
+          // var options = [
+          //   {selector: '#image-4', offset: 50, callback: 'Materialize.toast("This is our ScrollFire Demo!", 1500 )' },
+          //   {selector: '#image-10', offset: 205, callback: 'Materialize.toast("Please continue scrolling!", 1500 )' }
+          // ];
+          Materialize.scrollFire(options);
+        }
+      });
+
+      function show_post(index, total){
+        var count = 0;
+        var ind = index;
+        if((index+post_per_load) > total){
+          count = 9;
+        }
+        else{
+          count = total-index;
+        }
+        
+        for(i=0;i<count;i++){
+          var temp_card = '';
+          temp_card += '<div class="col l4 m6 s12 gallery-item gallery-expand ce '+post[ind]["category"]+'">';
+          temp_card += '  <div class="gallery-curve-wrapper">';
+          temp_card += '    <a class="gallery-cover gray">';
+          temp_card += '      <img class="responsive-img" src="'+post[ind]["image"]+'" alt="placeholder" crossOrigin="anonymous">';
+          temp_card += '    </a>';
+          temp_card += '   <div class="gallery-header">';
+          temp_card += '    <span>'+post[ind]["title"]+'</span>';
+          temp_card += '  </div>';
+          temp_card += '  <div class="gallery-body">';
+          temp_card += '    <div class="title-wrapper">';
+          temp_card += '         <h3>'+post[ind]["title"]+'</h3>';
+          temp_card += '        <span class="gj">'+post[ind]["artist"]+' - '+post[ind]["category"]+'</span>';
+          temp_card += '       </div>';
+          temp_card += '        <p class="fi">'+post[ind]["description"]+'</p>';
+          temp_card += '      <br>';
+          temp_card += '      <p class="fi">'+post[ind]["date"]+'</p>';
+          temp_card += '    </div>';
+          temp_card += '     <div class="gallery-action">';
+          temp_card += '      <a class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">favorite</i></a>';
+          temp_card += '     </div>';
+          temp_card += ' </div>';
+          temp_card += '</div>';
+
+          ind++;
+          $('#list-post').append(temp_card);
+        }
+      }
     </script>
   </body>
 </html>
