@@ -20,6 +20,7 @@
         $(".preloader").fadeOut(3000);
         for(i=int_total_post;i>= 1;i--){
           console.log(i);
+          console.log($('#title-'+i).attr('data'));
           temp_post["image"] = $('#image-'+i).attr('data');
           temp_post["title"] = $('#title-'+i).attr('data');
           temp_post["artist"] = $('#artist-'+i).attr('data');
