@@ -18,7 +18,7 @@
         var total_post = $('#total-post').text();
         var int_total_post = parseInt(total_post);
         $(".preloader").fadeOut(3000);
-        for(i=1;i<= int_total_post;i++){
+        for(i=int_total_post;i>= 1;i--){
           temp_post["image"] = $('#image-'+i).attr('data');
           temp_post["title"] = $('#title-'+i).attr('data');
           temp_post["artist"] = $('#artist-'+i).attr('data');
