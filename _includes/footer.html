@@ -27,7 +27,7 @@
           temp_post["category"] = $('#category-'+i).attr('data');
           temp_post["description"] = $('#description-'+i).attr('data');
           temp_post["date"] = $('#date-'+i).attr('data');
-          post[i] = temp_post;
+          post.push(temp_post);
         }
         console.log(post);
 
@@ -61,14 +61,14 @@
         var ind = index;
         if(index > post_per_load){
           count = 9;
-          lim = index-post_per_load;
+          lim = index + post_per_load;
         }
         else{
           count = index;
-          lim = 0;
+          lim = total;
         }
         
-        for(i=count;i>lim;i--){
+        for(i=count;i<lim;i++){
           var temp_card = '';
           temp_card += '<div class="col l4 m6 s12 gallery-item gallery-expand ce '+post[i]["category"]+'">';
           temp_card += '  <div class="gallery-curve-wrapper">';
