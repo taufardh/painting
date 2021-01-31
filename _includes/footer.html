@@ -34,7 +34,7 @@
           var div = Math.floor(int_total_post/post_per_load);
           var rest = int_total_post%post_per_load;
           for(ind=div;ind>0;ind--){
-            var fire_function = '{selector: "#image-'+(int_total_post - (post_per_load*div))+'", offset: 50, callback: "show_post('+(int_total_post - (post_per_load*div))+','+int_total_post+');" }';
+            var fire_function = '{selector: "#image-'+(int_total_post - (post_per_load*div)-1)+'", offset: 50, callback: "show_post('+(int_total_post - (post_per_load*div))+','+int_total_post+');" }';
             options[ind] = fire_function;
           }
 
