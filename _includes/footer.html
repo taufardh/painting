@@ -33,8 +33,8 @@
           var options = [];
           var div = Math.floor(int_total_post/post_per_load);
           var rest = int_total_post%post_per_load;
-          for(ind=0;ind<div;ind++){
-            var fire_function = '{selector: "#image-'+ind*post_per_load+'", offset: 50, callback: "show_post('+ind*post_per_load+','+int_total_post+');" }';
+          for(ind=div;ind>0;ind--){
+            var fire_function = '{selector: "#image-'+(int_total_post - (post_per_load*div))+'", offset: 50, callback: "show_post('+(int_total_post - (post_per_load*div))+','+int_total_post+');" }';
             options[ind] = fire_function;
           }
 
@@ -49,31 +49,33 @@
       function show_post(index, total){
         var count = 0;
         var ind = index;
-        if((index+post_per_load) > total){
+        if(index > post_per_load){
           count = 9;
+          lim = index-post_per_load;
         }
         else{
-          count = total-index;
+          count = index;
+          lim = 0;
         }
         
-        for(i=0;i<count;i++){
+        for(i=count;i>lim;i--){
           var temp_card = '';
-          temp_card += '<div class="col l4 m6 s12 gallery-item gallery-expand ce '+post[ind]["category"]+'">';
+          temp_card += '<div class="col l4 m6 s12 gallery-item gallery-expand ce '+post[i]["category"]+'">';
           temp_card += '  <div class="gallery-curve-wrapper">';
           temp_card += '    <a class="gallery-cover gray">';
-          temp_card += '      <img class="responsive-img" src="'+post[ind]["image"]+'" alt="placeholder" crossOrigin="anonymous">';
+          temp_card += '      <img class="responsive-img" src="'+post[i]["image"]+'" alt="placeholder" crossOrigin="anonymous">';
           temp_card += '    </a>';
           temp_card += '   <div class="gallery-header">';
-          temp_card += '    <span>'+post[ind]["title"]+'</span>';
+          temp_card += '    <span>'+post[i]["title"]+'</span>';
           temp_card += '  </div>';
           temp_card += '  <div class="gallery-body">';
           temp_card += '    <div class="title-wrapper">';
-          temp_card += '         <h3>'+post[ind]["title"]+'</h3>';
-          temp_card += '        <span class="gj">'+post[ind]["artist"]+' - '+post[ind]["category"]+'</span>';
+          temp_card += '         <h3>'+post[i]["title"]+'</h3>';
+          temp_card += '        <span class="gj">'+post[i]["artist"]+' - '+post[i]["category"]+'</span>';
           temp_card += '       </div>';
-          temp_card += '        <p class="fi">'+post[ind]["description"]+'</p>';
+          temp_card += '        <p class="fi">'+post[i]["description"]+'</p>';
           temp_card += '      <br>';
-          temp_card += '      <p class="fi">'+post[ind]["date"]+'</p>';
+          temp_card += '      <p class="fi">'+post[i]["date"]+'</p>';
           temp_card += '    </div>';
           temp_card += '     <div class="gallery-action">';
           temp_card += '      <a class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">favorite</i></a>';
@@ -81,7 +83,6 @@
           temp_card += ' </div>';
           temp_card += '</div>';
 
-          ind++;
           $('#list-post').append(temp_card);
         }
       }
