@@ -15,9 +15,9 @@
       $(document).ready(function(){
         var post = new Array();
         var temp_post = new Object();
+        var total_post = $('#total-post').text();
         var int_total_post = parseInt(total_post);
         $(".preloader").fadeOut(3000);
-        var total_post = $('#total-post').text();
         for(i=1;i<= int_total_post;i++){
           temp_post["image"] = $('#image-'+i).attr('data');
           temp_post["title"] = $('#title-'+i).attr('data');
