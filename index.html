@@ -7,7 +7,7 @@ title: "Gallery Painting"
 <div id="portfolio" class="section gray">
   <div class="container">
     <div class="b row" id="list-post">
-      {% for post in site.posts reversed %}
+      {% for post in site.posts reversed limit:9 %}
         <div class="col l4 m6 s12 gallery-item gallery-expand ce {{ post.categories }}">
           <div class="gallery-curve-wrapper">
             <a class="gallery-cover gray">
