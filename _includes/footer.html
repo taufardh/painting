@@ -12,21 +12,21 @@
       $(document).ready(function(){
         $(".preloader").fadeOut(3000);
       });
-      $(window).on('hashchange', function(e){
-        var hash = window.location.hash.substring(1);
-        setTimeout(function(){ reset_disqus(hash, 'https://painting.mahaputera.art/#!'+hash); }, 1000);
-      });
-      /* * * Disqus Reset Function * * */
-      function reset_disqus(newIdentifier, newUrl) {
-        DISQUS.reset({
-          reload: true,
-          config: function () {
-            this.page.identifier = newIdentifier;
-            this.page.url = newUrl;
-          }
-        });
-        console.log(newIdentifier);
-      };
+      // $(window).on('hashchange', function(e){
+      //   var hash = window.location.hash.substring(1);
+      //   setTimeout(function(){ reset_disqus(hash, 'https://painting.mahaputera.art/#!'+hash); }, 1000);
+      // });
+      // /* * * Disqus Reset Function * * */
+      // function reset_disqus(newIdentifier, newUrl) {
+      //   DISQUS.reset({
+      //     reload: true,
+      //     config: function () {
+      //       this.page.identifier = newIdentifier;
+      //       this.page.url = newUrl;
+      //     }
+      //   });
+      //   console.log(newIdentifier);
+      // };
     </script>
   </body>
 </html>
