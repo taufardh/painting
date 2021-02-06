@@ -34,7 +34,7 @@
         var overlayActive = false;
         var doneAnimating = true;
         var origin = $(this);
-        console.log(origin);
+        console.log(i);
         var objectId = origin.attr('id') || i.toString();
         var $object = origin.find('.gallery-cover');
         var $header = origin.find('.gallery-header');
