@@ -14,14 +14,7 @@
       });
       $(window).on('hashchange', function(e){
         var hash = window.location.hash.substring(1);
-        console.log(hash);
-        DISQUS.reset({
-            reload: true,
-            config: function () {
-                this.page.identifier = hash;
-                this.page.url = 'https://painting.mahaputera.art/#'+hash;
-            }
-        });
+        reset_disqus(hash, 'https://painting.mahaputera.art/#'+hash);
       });
     </script>
   </body>
