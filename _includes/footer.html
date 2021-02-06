@@ -10,96 +10,96 @@
       //   manipulate[0].innerHTML = "{{ page.title }}";
       // });
 
-      var post_per_load = 9;
-      var post = new Array();
+      // var post_per_load = 9;
+      // var post = new Array();
       
       $(document).ready(function(){
-        var total_post = $('#total-post').text();
-        var int_total_post = parseInt(total_post);
+        // var total_post = $('#total-post').text();
+        // var int_total_post = parseInt(total_post);
         $(".preloader").fadeOut(3000);
-        for(i=int_total_post;i>= 1;i--){
-          var temp_post = new Object();
-          console.log(i);
-          console.log($('#title-'+i).attr('data'));
-          temp_post["image"] = $('#image-'+i).attr('data');
-          temp_post["title"] = $('#title-'+i).attr('data');
-          temp_post["artist"] = $('#artist-'+i).attr('data');
-          temp_post["category"] = $('#category-'+i).attr('data');
-          temp_post["description"] = $('#description-'+i).attr('data');
-          temp_post["date"] = $('#date-'+i).attr('data');
-          post.push(temp_post);
-        }
-        console.log(post);
+        // for(i=int_total_post;i>= 1;i--){
+        //   var temp_post = new Object();
+        //   console.log(i);
+        //   console.log($('#title-'+i).attr('data'));
+        //   temp_post["image"] = $('#image-'+i).attr('data');
+        //   temp_post["title"] = $('#title-'+i).attr('data');
+        //   temp_post["artist"] = $('#artist-'+i).attr('data');
+        //   temp_post["category"] = $('#category-'+i).attr('data');
+        //   temp_post["description"] = $('#description-'+i).attr('data');
+        //   temp_post["date"] = $('#date-'+i).attr('data');
+        //   post.push(temp_post);
+        // }
+        // console.log(post);
 
-        if(int_total_post > post_per_load){
-          var options = [];
-          var div = Math.floor(int_total_post/post_per_load);
-          var rest = int_total_post%post_per_load;
-          console.log(div);
-          console.log(post_per_load);
-          console.log(int_total_post);
-          console.log(int_total_post - (post_per_load*div)+1);
-          var jndex = 0;
-          for(ind=div;ind>0;ind--){
-            // var fire_function = '{selector: "#image-trigger-'+(int_total_post - (post_per_load*div)+1)+'", offset: 50, callback: "show_post('+(int_total_post - (post_per_load*div))+','+int_total_post+');" }';
-            // var fire_function = '{selector: "#image-trigger-'+(int_total_post - (post_per_load*div)+1)+'", offset: 50, callback: "Materialize.toast("This is our ScrollFire Demo!", 1500 )" }';
-            // options[jndex] = fire_function;
-            jndex++;
-          }
+        // if(int_total_post > post_per_load){
+        //   var options = [];
+        //   var div = Math.floor(int_total_post/post_per_load);
+        //   var rest = int_total_post%post_per_load;
+        //   console.log(div);
+        //   console.log(post_per_load);
+        //   console.log(int_total_post);
+        //   console.log(int_total_post - (post_per_load*div)+1);
+        //   var jndex = 0;
+        //   for(ind=div;ind>0;ind--){
+        //     // var fire_function = '{selector: "#image-trigger-'+(int_total_post - (post_per_load*div)+1)+'", offset: 50, callback: "show_post('+(int_total_post - (post_per_load*div))+','+int_total_post+');" }';
+        //     // var fire_function = '{selector: "#image-trigger-'+(int_total_post - (post_per_load*div)+1)+'", offset: 50, callback: "Materialize.toast("This is our ScrollFire Demo!", 1500 )" }';
+        //     // options[jndex] = fire_function;
+        //     jndex++;
+        //   }
 
-          var options = [
-            {selector: '#image-trigger-6', offset: 50, callback: 'show_post(5,14)' }
-            // {selector: '#image-10', offset: 205, callback: 'Materialize.toast("Please continue scrolling!", 1500 )' }
-          ];
-          console.log(options);
-          Materialize.scrollFire(options);
-        }
+        //   var options = [
+        //     {selector: '#image-trigger-6', offset: 50, callback: 'show_post(5,14)' }
+        //     // {selector: '#image-10', offset: 205, callback: 'Materialize.toast("Please continue scrolling!", 1500 )' }
+        //   ];
+        //   console.log(options);
+        //   Materialize.scrollFire(options);
+        // }
       });
 
-      function show_post(index, total){
-        var count = 0;
-        var ind = index;
-        if(index > post_per_load){
-          count = 9;
-          lim = index + post_per_load;
-        }
-        else{
-          count = index;
-          lim = total;
-        }
+      // function show_post(index, total){
+      //   var count = 0;
+      //   var ind = index;
+      //   if(index > post_per_load){
+      //     count = 9;
+      //     lim = index + post_per_load;
+      //   }
+      //   else{
+      //     count = index;
+      //     lim = total;
+      //   }
         
-        for(i=count;i<lim;i++){
-          var temp_card = '';
-          temp_card += '<div class="col l4 m6 s12 gallery-item gallery-expand ce '+post[i]["category"]+'">';
-          temp_card += '  <div class="gallery-curve-wrapper">';
-          temp_card += '    <a class="gallery-cover gray">';
-          temp_card += '      <img class="responsive-img" src="'+post[i]["image"]+'" alt="placeholder" crossOrigin="anonymous">';
-          temp_card += '    </a>';
-          temp_card += '   <div class="gallery-header">';
-          temp_card += '    <span>'+post[i]["title"]+'</span>';
-          temp_card += '  </div>';
-          temp_card += '  <div class="gallery-body">';
-          temp_card += '    <div class="title-wrapper">';
-          temp_card += '         <h3>'+post[i]["title"]+'</h3>';
-          temp_card += '        <span class="gj">'+post[i]["artist"]+' - '+post[i]["category"]+'</span>';
-          temp_card += '       </div>';
-          temp_card += '        <p class="fi">'+post[i]["description"]+'</p>';
-          temp_card += '      <br>';
-          temp_card += '      <p class="fi">'+post[i]["date"]+'</p>';
-          temp_card += '    </div>';
-          temp_card += '     <div class="gallery-action">';
-          temp_card += '      <a class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">favorite</i></a>';
-          temp_card += '     </div>';
-          temp_card += ' </div>';
-          temp_card += '</div>';
+      //   for(i=count;i<lim;i++){
+      //     var temp_card = '';
+      //     temp_card += '<div class="col l4 m6 s12 gallery-item gallery-expand ce '+post[i]["category"]+'">';
+      //     temp_card += '  <div class="gallery-curve-wrapper">';
+      //     temp_card += '    <a class="gallery-cover gray">';
+      //     temp_card += '      <img class="responsive-img" src="'+post[i]["image"]+'" alt="placeholder" crossOrigin="anonymous">';
+      //     temp_card += '    </a>';
+      //     temp_card += '   <div class="gallery-header">';
+      //     temp_card += '    <span>'+post[i]["title"]+'</span>';
+      //     temp_card += '  </div>';
+      //     temp_card += '  <div class="gallery-body">';
+      //     temp_card += '    <div class="title-wrapper">';
+      //     temp_card += '         <h3>'+post[i]["title"]+'</h3>';
+      //     temp_card += '        <span class="gj">'+post[i]["artist"]+' - '+post[i]["category"]+'</span>';
+      //     temp_card += '       </div>';
+      //     temp_card += '        <p class="fi">'+post[i]["description"]+'</p>';
+      //     temp_card += '      <br>';
+      //     temp_card += '      <p class="fi">'+post[i]["date"]+'</p>';
+      //     temp_card += '    </div>';
+      //     temp_card += '     <div class="gallery-action">';
+      //     temp_card += '      <a class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">favorite</i></a>';
+      //     temp_card += '     </div>';
+      //     temp_card += ' </div>';
+      //     temp_card += '</div>';
 
-          $('#list-post').append(temp_card).masonry('appended', temp_card);
-          setTimeout(function () {
-            $('#list-post').masonry('reloadItems');
-            $('#list-post').masonry();
-          }, 100);
-        }
-      }
+      //     $('#list-post').append(temp_card).masonry('appended', temp_card);
+      //     setTimeout(function () {
+      //       $('#list-post').masonry('reloadItems');
+      //       $('#list-post').masonry();
+      //     }, 100);
+      //   }
+      // }
     </script>
   </body>
 </html>
