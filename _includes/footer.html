@@ -93,7 +93,11 @@
           temp_card += ' </div>';
           temp_card += '</div>';
 
-          $('#list-post').append(temp_card).masonry( 'reload' );
+          $('#list-post').append(temp_card).masonry('appended', temp_card);
+          setTimeout(function () {
+            $('#list-post').masonry('reloadItems');
+            $('#list-post').masonry();
+          }, 100);
         }
       }
     </script>
