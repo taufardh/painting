@@ -7,6 +7,7 @@
     <script src="{{ "/assets/js/color-thief.min.js" | prepend: site.baseurl }}"></script>
     <script src="{{ "/assets/js/galleryExpand.js" | prepend: site.baseurl }}"></script>
     <script src="{{ "/assets/js/init.js" | prepend: site.baseurl }}"></script>
+    <script id="dsq-count-scr" src="//taufardh.disqus.com/count.js" async></script>
     <script>
       $(document).ready(function(){
         $(".preloader").fadeOut(3000);
@@ -14,15 +15,13 @@
       $(window).on('hashchange', function(e){
         var hash = window.location.hash.substring(1);
         console.log(hash);
-        // DISQUS.reset({
-        //     reload: true,
-        //     config: function () {
-        //         this.page.identifier = newIdentifier;
-        //         this.page.url = newUrl;
-        //         this.page.title = newTitle;
-        //         this.language = newLanguage;
-        //     }
-        // });
+        DISQUS.reset({
+            reload: true,
+            config: function () {
+                this.page.identifier = hash;
+                this.page.url = 'https://painting.mahaputera.art/#'+hash;
+            }
+        });
       });
     </script>
   </body>
