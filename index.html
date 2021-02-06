@@ -19,7 +19,7 @@ title: "Gallery Painting"
             <div class="gallery-body">
               <div class="title-wrapper">
                 <h3>{{ post.title }}</h3>
-                <span class="price">{{ post.artist }} - {{ post.categories }}</span>
+                <span class="price">{{ post.artist }} - {% include date.html date=post.date %}</span>
               </div>
               <p class="description">{{ post.description }}</p>
               <br>
