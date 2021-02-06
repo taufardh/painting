@@ -98,6 +98,7 @@
             $('#list-post').masonry('reloadItems');
             $('#list-post').masonry();
           }, 100);
+          $.loadScript('{{ "/assets/js/gallerymin.opt.js" | prepend: site.baseurl }}');
         }
       }
     </script>
