@@ -9,6 +9,19 @@
     <script src="{{ "/assets/js/init.js" | prepend: site.baseurl }}"></script>
     <script id="dsq-count-scr" src="//taufardh.disqus.com/count.js" async></script>
     <script>
+      $(document).onload(function(){
+        /* * * Disqus Reset Function * * */
+        var reset_disqus = function (newIdentifier, newUrl) {
+          DISQUS.reset({
+            reload: true,
+            config: function () {
+              this.page.identifier = newIdentifier;
+              this.page.url = newUrl;
+            }
+          });
+          console.log(newIdentifier);
+        };
+      });
       $(document).ready(function(){
         $(".preloader").fadeOut(3000);
       });
