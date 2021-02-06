@@ -22,7 +22,7 @@
         primaryColor: '', // Primary color that overrides color thief.
         secondaryColor: '', // Secondary color that overrides color thief.
         fillScreen: false, // Modal to full width background transition style.
-        dynamicRouting: false, // Add hash id to URL to allow dynamic routing.
+        dynamicRouting: true, // Add hash id to URL to allow dynamic routing.
       };
       options = $.extend(defaults, options);
 
