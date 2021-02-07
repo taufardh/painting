@@ -12,41 +12,6 @@
       $(document).ready(function(){
         $(".preloader").fadeOut(3000);
       });
-      // $(window).on('hashchange', function(e){
-      //   var hash = window.location.hash.substring(1);
-      //   old_hash = hash;
-      //   $('.'+old_hash).attr('id','');
-      //   $('.'+hash).attr('id','disqus_thread');
-      //   setTimeout(function(){ reset_disqus(hash, 'https://painting.mahaputera.art/#'+hash); }, 1000);
-      // });
-      /* * * Disqus Reset Function * * */
-      function reset_disqus(newIdentifier, newUrl) {
-        DISQUS.reset({
-          reload: true,
-          config: function () {
-            this.page.identifier = newIdentifier;
-            this.page.url = newUrl;
-          }
-        });
-        console.log(newIdentifier);
-      };
-
-      $('.comment-btn').on('click', function(e){
-        $('.comment-div').html('');
-        $('.comment-div').append('<div id="disqus_thread"></div>');
-
-        var hash = window.location.hash.substring(1);
-        var disqus_config = function () {
-        this.page.url = 'https://painting.mahaputera.art/#'+hash;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = hash; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        };
-        (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://taufardh.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-        })();
-      });
     </script>
     
   </body>
