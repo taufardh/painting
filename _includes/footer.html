@@ -18,7 +18,7 @@
         old_hash = hash;
         $('.'+old_hash).attr('id','');
         $('.'+hash).attr('id','disqus_thread');
-        setTimeout(function(){ reset_disqus(hash, 'https://painting.mahaputera.art/#!'+hash); }, 1000);
+        setTimeout(function(){ reset_disqus(hash, 'https://painting.mahaputera.art/#'+hash); }, 1000);
       });
       /* * * Disqus Reset Function * * */
       function reset_disqus(newIdentifier, newUrl) {
@@ -38,7 +38,7 @@
       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
       
       var disqus_config = function () {
-      this.page.url = 'https://painting.mahaputera.art/#!';  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.url = 'https://painting.mahaputera.art/#';  // Replace PAGE_URL with your page's canonical URL variable
       this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
       };
       
