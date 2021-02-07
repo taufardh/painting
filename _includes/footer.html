@@ -38,7 +38,8 @@
       var disqus_url = '';
 
       // Leave a comment/cancel.
-      $('.entry a.comment').click(function () {
+      $('.entry a.comment').click(function (event) {
+          event.preventDefault();
           // Firefox? Bad firefox.
           if ($.browser.mozilla && window.disqus_loaded) {
               return true;
@@ -72,7 +73,8 @@
       });
 
       // Hide/kill all open DISQUS forums.
-      $('.entry a.nocomment').click(function () {
+      $('.entry a.nocomment').click(function (event) {
+        event.preventDefault();
           $('div.comments').slideUp('normal',
               function () {
                   $(this).find('.disqus_thread').empty();
