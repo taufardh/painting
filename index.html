@@ -24,7 +24,21 @@ title: "Gallery Painting"
               <p class="description">{{ post.description }}</p>
               <br>
               <p class="description">{% include date.html date=post.date %}</p>
-              <div class="{{ post.id_post }}-{{ post.slug }}"></div>
+              <!-- comment -->
+              <div class="comments">
+                <p class="nocomment">
+                  <a class="nocomment" href="/">Hide comments</a>
+                </p>
+                <div class="disqus_thread"></div>
+              </div>
+              <p class="comment">
+                <a class="comment"
+                  href="http://painting.mahaputera.art/#{{ post.id_post }}-{{ post.slug }}"
+                  data-disqus-identifier="{{ post.id_post }}-{{ post.slug }}">
+                  <span>Leave a comment</span>
+                </a>
+              </p>
+              <!-- endcomment -->
               <!--<p class="fi"></p>-->
             </div>
             <div class="gallery-action">

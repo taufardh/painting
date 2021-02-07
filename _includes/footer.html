@@ -9,46 +9,89 @@
     <script src="{{ "/assets/js/init.js" | prepend: site.baseurl }}"></script>
     <script id="dsq-count-scr" src="//taufardh.disqus.com/count.js" async></script>
     <script>
-      var old_hash;
       $(document).ready(function(){
         $(".preloader").fadeOut(3000);
       });
-      $(window).on('hashchange', function(e){
-        var hash = window.location.hash.substring(1);
-        old_hash = hash;
-        $('.'+old_hash).attr('id','');
-        $('.'+hash).attr('id','disqus_thread');
-        setTimeout(function(){ reset_disqus(hash, 'https://painting.mahaputera.art/#'+hash); }, 1000);
-      });
+      // $(window).on('hashchange', function(e){
+      //   var hash = window.location.hash.substring(1);
+      //   old_hash = hash;
+      //   $('.'+old_hash).attr('id','');
+      //   $('.'+hash).attr('id','disqus_thread');
+      //   setTimeout(function(){ reset_disqus(hash, 'https://painting.mahaputera.art/#'+hash); }, 1000);
+      // });
       /* * * Disqus Reset Function * * */
-      function reset_disqus(newIdentifier, newUrl) {
-        DISQUS.reset({
-          reload: true,
-          config: function () {
-            this.page.identifier = newIdentifier;
-            this.page.url = newUrl;
-          }
-        });
-        console.log(newIdentifier);
-      };
+      // function reset_disqus(newIdentifier, newUrl) {
+      //   DISQUS.reset({
+      //     reload: true,
+      //     config: function () {
+      //       this.page.identifier = newIdentifier;
+      //       this.page.url = newUrl;
+      //     }
+      //   });
+      //   console.log(newIdentifier);
+      // };
     </script>
     <script>
-      /**
-      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-      
-      var disqus_config = function () {
-      this.page.url = 'https://painting.mahaputera.art/#';  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-      };
-      
-      (function() { // DON'T EDIT BELOW THIS LINE
-      var d = document, s = d.createElement('script');
-      s.src = 'https://taufardh.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-      })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+       // DISQUS vars.
+      var disqus_shortname = 'taufardh';
+      var disqus_identifier = '';
+      var disqus_url = '';
+
+      // Leave a comment/cancel.
+      $('.entry a.comment').click(function () {
+          // Firefox? Bad firefox.
+          if ($.browser.mozilla && window.disqus_loaded) {
+              return true;
+          }
+
+          // Init DISQUS.
+          disqus_identifier = $(this).data('disqus-identifier');
+          disqus_url = $(this).attr('href');
+
+          // DISQUS requires each thread to have the ID #disqus_thread.
+          $entry = $(this).parents('div.entry');
+          $('#disqus_thread').removeAttr('id');
+          $entry.find('div.disqus_thread').attr('id', 'disqus_thread');
+
+          // Load DISQUS script, if not already loaded.
+          if ($entry.find('div.disqus_thread .dsq-reply').length == 0) {
+              $.getScript('http://' + disqus_shortname + '.disqus.com/embed.js',
+                  function () {
+                      window.disqus_interval =
+                          setInterval('is_disqus_loaded("' + $entry.attr('id') + '")',
+                              200);
+                  }
+              );
+          }
+
+          // Hide/kill other DISQUS forums.
+          $entry.find('a.nocomment').trigger('click');
+          $(this).find('span').addClass('loading');
+          return false;
+
+      });
+
+      // Hide/kill all open DISQUS forums.
+      $('.entry a.nocomment').click(function () {
+          $('div.comments').slideUp('normal',
+              function () {
+                  $(this).find('.disqus_thread').empty();
+              });
+          $('p.comment').slideDown();
+          return false;
+      });
+
+      function is_disqus_loaded(entry_id) {
+          $entry = $('#' + entry_id);
+          if ($entry.find('div.disqus_thread .dsq-reply').length) {
+              clearInterval(window.disqus_interval);
+              window.disqus_loaded = true;
+              $entry.find('div.comments').slideDown();
+              $entry.find('a.comment span').removeClass('loading');
+              $entry.find('p.comment').slideUp();
+          }
+      }    
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </body>
 </html>
