@@ -28,14 +28,14 @@
   </div>
     
     <div class="fixed-action-btn click-to-toggle">
-      <a id="bg-control" class="btn-floating btn-large grey darken-4 pulse tooltipped" data-position="left" data-delay="50" data-tooltip="Ambience Control">
-          <i class="material-icons">music_note</i>
+      <a id="bg-control" class="btn-floating btn-large grey darken-4 pulse tooltipped" data-position="left" data-delay="50" data-tooltip="Menu">
+          <i class="material-icons">widgets</i>
       </a>
       <ul>
-          <li><a id="comment" class="btn-floating btn-large green tooltipped modal-trigger" href="#modal-comment-section"><i class="material-icons large">chat</i></a></li>
-          <li><a id="vid_control" class="btn-floating btn-large red tooltipped" onclick="playVid();"><i class="material-icons large">play_arrow</i></a></li>
-          <li><a class="btn-floating grey darken-3 waves-effect tooltipped" onclick="nextVideo();" data-position="left" data-delay="50" data-tooltip="Next Video"><i class="material-icons">skip_next</i></a></li>
-          <li><a class="btn-floating grey darken-3 waves-effect tooltipped" onclick="prevVideo();" data-position="left" data-delay="50" data-tooltip="Previous Video"><i class="material-icons">skip_previous</i></a></li>
+          <li><a id="comment" class="btn-floating btn-large green tooltipped modal-trigger" href="#modal-comment-section" data-position="left" data-delay="50" data-tooltip="Comment Group"><i class="material-icons large">chat</i></a></li>
+          <li><a id="vid_control" class="btn-floating btn-large red tooltipped" onclick="playVid();" data-position="left" data-delay="50" data-tooltip="Play Sound"><i class="material-icons large">play_arrow</i></a></li>
+          <li><a class="btn-floating grey darken-3 waves-effect tooltipped" onclick="nextSound();" data-position="left" data-delay="50" data-tooltip="Next Sound"><i class="material-icons">skip_next</i></a></li>
+          <li><a class="btn-floating grey darken-3 waves-effect tooltipped" onclick="prevSound();" data-position="left" data-delay="50" data-tooltip="Previous Sound"><i class="material-icons">skip_previous</i></a></li>
           <li><a class="btn-floating grey darken-3 waves-effect tooltipped" onclick="setVolume('up');" data-position="left" data-delay="50" data-tooltip="Volume Up"><i class="material-icons">volume_up</i></a></li>
           <li><a class="btn-floating grey darken-3 waves-effect tooltipped" onclick="setVolume('down');" data-position="left" data-delay="50" data-tooltip="Volume Down"><i class="material-icons">volume_down</i></a></li>
       </ul>
@@ -72,6 +72,133 @@
           }
         );
       });
+
+      var videoPlaylist = [
+      {
+        position: "0",
+        title: "Binaural Rain Sounds For Sleep and Study in Quarantine.",
+        videoId: "APD0mMWL3x4"
+      },{
+        position: "1",
+        title: "Walking in the Rain Tokyo, Japan ",
+        videoId: "Et7O5-CzJZg"
+      },{
+        position: "2",
+        title: "Rain & Thunder Sounds in the Foggy Forest.",
+        videoId: "nRBCFsU_KDc"
+      },{
+        position: "3",
+        title: "Backstreets of Japan at night",
+        videoId: "Hndf5JRwUL0"
+      },{
+        position: "4",
+        title: "Walking in the Rain in Amsterdam.",
+        videoId: "N0af7_w5GBQ"
+      },{
+        position: "5",
+        title: "Walking in Heavy Rainstorm in NYC",
+        videoId: "uMnGzVPUEB4"
+      },{
+        position: "6",
+        title: "Relaxing Walk in the Rain, Umbrella and Nature",
+        videoId: "ynLpZGegiJE"
+
+      },{
+        position: "7",
+        title: "Driving in the Rain Seoul to Daegu, Korea",
+        videoId: "Dwswey-GqQc"
+
+      }];
+
+
+      let soundPlay = 0;
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+
+          height: '1024',
+          width: '1024',
+          videoId: 'DPD8kvSPPbs',
+          playerVars: {
+            'autoplay': 0,
+            'controls': 0,
+            'showinfo': 0,
+            'modestbranding': 0,
+            'loop': 1,
+            'fs': 0,
+            'cc_load_policty': 0,
+            'iv_load_policy': 3
+          },
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+
+      function onPlayerReady(event) {
+        /*event.target.playVideo();*/
+      }
+
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.ENDED) {
+          setTimeout(player.playVideo(),3000);
+
+        }
+      }
+
+      function playVid() {
+        if(player.getPlayerState() == 1){
+          /*isPlaying*/
+          player.stopVideo();
+        }else{
+          player.playVideo();
+        }
+      }
+
+      function nextVideo(){
+        player.stopVideo();
+        if(soundPlay < videoPlaylist.length-1){
+          soundPlay = soundPlay+1;
+        }else{
+          soundPlay = 0;
+        }
+        player.loadVideoById(videoPlaylist[soundPlay].videoId);
+        player.playVideo();
+        player.seekTo(5);
+      }
+
+      function prevVideo(){
+        if(soundPlay > 0){
+          soundPlay = soundPlay-1;
+        }else{
+          soundPlay = videoPlaylist.length-1;
+        }
+
+        player.stopVideo();
+        player.loadVideoById(videoPlaylist[soundPlay].videoId);
+        player.seekTo(5);
+      }
+
+      function setVolume(change){
+        var curr_volume = player.getVolume();
+        if(change == 'up'){
+            curr_volume = curr_volume + 10;
+            player.setVolume(curr_volume);
+        }
+        else if(change == 'down'){
+            curr_volume = curr_volume - 10;
+            player.setVolume(curr_volume);
+            //player.setVolume(volume);
+        }
+      }
     </script>
     
   </body>
