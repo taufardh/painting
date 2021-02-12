@@ -1,9 +1,39 @@
+    <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+      <div id="disqus_thread"></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+                
+                var disqus_config = function () {
+                this.page.url = 'https://painting.mahaputera.art';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = 'painting'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://painting-mahaputera.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+    </div>
+  </div>
+    
     <div class="fixed-action-btn click-to-toggle">
       <a id="bg-control" class="btn-floating btn-large grey darken-4 pulse tooltipped" data-position="left" data-delay="50" data-tooltip="Ambience Control">
           <i class="material-icons">music_note</i>
       </a>
       <ul>
-          <li><a id="comment" class="btn-floating btn-large green tooltipped"><i class="material-icons large">chat</i></a></li>
+          <li><a id="comment" class="btn-floating btn-large green tooltipped modal-trigger" href="#modal1"><i class="material-icons large">chat</i></a></li>
           <li><a id="vid_control" class="btn-floating btn-large red tooltipped" onclick="playVid();"><i class="material-icons large">play_arrow</i></a></li>
           <li><a class="btn-floating grey darken-3 waves-effect tooltipped" onclick="nextVideo();" data-position="left" data-delay="50" data-tooltip="Next Video"><i class="material-icons">skip_next</i></a></li>
           <li><a class="btn-floating grey darken-3 waves-effect tooltipped" onclick="prevVideo();" data-position="left" data-delay="50" data-tooltip="Previous Video"><i class="material-icons">skip_previous</i></a></li>
