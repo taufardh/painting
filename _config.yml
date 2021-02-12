@@ -9,7 +9,3 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-
-# Staticman comments
-staticmanUrl: https://mahaputera.herokuapp.com/v2/entry/taufardh/taufardh.github.io/main/comments
-enableComments: true
