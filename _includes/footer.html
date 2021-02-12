@@ -12,6 +12,11 @@
       $(document).ready(function(){
         $(".preloader").fadeOut(3000);
       });
+
+      function open_comment(){
+        $('#comment-group-section').scrollIntoView({ behavior: 'smooth' });
+        setTimeout(function(){ $('#comment-group-section').galleryExpand('open'); }, 1000);
+      }
     </script>
     
   </body>
