@@ -15,7 +15,7 @@ title: "Gallery Painting"
           </div>
           <div class="card-action">
             <a href="#">This is a link</a>
-            <a href="#">This is a link</a>
+            <a href="#" onclick="$('#comment-group-section').trigger('click');">Comment Group</a>
           </div>
         </div>
       </div>
@@ -43,7 +43,45 @@ title: "Gallery Painting"
           </div>
         </div>
       {% endfor %}
-
+      <div id="comment-group-section" class="col l4 m6 s12 gallery-item gallery-expand gallery-filter all">
+        <div class="gallery-curve-wrapper">
+          <!-- <a class="gallery-cover gray">
+            <img class="responsive-img" src="{{ post.image }}" alt="placeholder" crossOrigin="anonymous">
+          </a> -->
+          <div class="gallery-header">
+            <span>Comment Group</span>
+          </div>
+          <div class="gallery-body">
+            <div class="title-wrapper">
+              <h3>Comment Group</h3>
+              <span class="price">12 Februari 2021 </span>
+            </div>
+            <p class="description"></p>
+            <div id="disqus_thread"></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+                
+                var disqus_config = function () {
+                this.page.url = 'https://painting.mahaputera.art';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = 'painting'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://painting-mahaputera.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+          <div class="gallery-action">
+            <a class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">chat</i></a>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
