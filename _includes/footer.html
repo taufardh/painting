@@ -14,7 +14,8 @@
       });
 
       function open_comment(){
-        $('#comment-group-section').scrollIntoView({ behavior: 'smooth' });
+        var elmnt = document.getElementById('comment-group-section');
+        elmnt.scrollIntoView({ behavior: 'smooth' });
         setTimeout(function(){ $('#comment-group-section').galleryExpand('open'); }, 1000);
       }
     </script>
