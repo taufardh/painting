@@ -1,8 +1,7 @@
     <!-- Modal Structure -->
-  <div id="modal1" class="modal modal-fixed-footer">
+  <div id="modal-comment-section" class="modal modal-fixed-footer">
     <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
+      <h5>Comment Group</h5>
       <div id="disqus_thread"></div>
             <script>
                 /**
@@ -33,7 +32,7 @@
           <i class="material-icons">music_note</i>
       </a>
       <ul>
-          <li><a id="comment" class="btn-floating btn-large green tooltipped modal-trigger" href="#modal1"><i class="material-icons large">chat</i></a></li>
+          <li><a id="comment" class="btn-floating btn-large green tooltipped modal-trigger" href="#modal-comment-section"><i class="material-icons large">chat</i></a></li>
           <li><a id="vid_control" class="btn-floating btn-large red tooltipped" onclick="playVid();"><i class="material-icons large">play_arrow</i></a></li>
           <li><a class="btn-floating grey darken-3 waves-effect tooltipped" onclick="nextVideo();" data-position="left" data-delay="50" data-tooltip="Next Video"><i class="material-icons">skip_next</i></a></li>
           <li><a class="btn-floating grey darken-3 waves-effect tooltipped" onclick="prevVideo();" data-position="left" data-delay="50" data-tooltip="Previous Video"><i class="material-icons">skip_previous</i></a></li>
@@ -69,21 +68,10 @@
             inDuration: 300, // Transition in duration
             outDuration: 200, // Transition out duration
             startingTop: '4%', // Starting top style attribute
-            endingTop: '10%', // Ending top style attribute
-            ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-              alert("Ready");
-              console.log(modal, trigger);
-            },
-            complete: function() { alert('Closed'); } // Callback for Modal close
+            endingTop: '10%' // Ending top style attribute
           }
         );
       });
-
-      function open_comment(){
-        var elmnt = document.getElementById('comment-group-section');
-        elmnt.scrollIntoView({ behavior: 'smooth' });
-        setTimeout(function(){ $('#comment-group-section').galleryExpand('open'); }, 1000);
-      }
     </script>
     
   </body>
