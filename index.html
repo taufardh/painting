@@ -18,6 +18,7 @@ title: "Gallery Painting"
           </div>
         </div>
       </div>
+      <div id="randomness">
       {% for post in site.posts %}
         <div id="{{ post.id_post }}-{{ post.slug }}" class="col l4 m6 s12 gallery-item gallery-expand gallery-filter {{ post.categories }}">
           <div class="gallery-curve-wrapper">
@@ -48,6 +49,13 @@ title: "Gallery Painting"
           </div>
         </div>
       {% endfor %}
+      </div>
+      <script>
+        var div = document.querySelector('#randomness');
+        for (var i = div.children.length; i >= 0; i--) {
+            div.appendChild(div.children[Math.random() * i | 0]);
+        }
+      </script>
     </div>
 
   </div>
