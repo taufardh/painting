@@ -9,3 +9,12 @@ categories: abstrak
 artist: 'Gallery teplok.id'
 instagram: 'dian_djoyo'
 ---
+
+Happy New Year.
+
+<hr>
+
+Pelukis:
+
+facebook : [Dian Indah Hapsari](https://www.facebook.com/dinda.djoyosudarmo){:target="_blank"}  
+instagram : [@dinda_djoyosudarmo](https://www.instagram.com/dinda_djoyosudarmo/){:target="_blank"}

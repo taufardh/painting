@@ -10,3 +10,14 @@ artist: 'Kidung Purnama'
 facebook: 'kidungp'
 instagram: 'kidungpurnama2012'
 ---
+
+IBARAT HUJAN DI DAUN KELADI, ukuran 21 X 30 Cm. Tahun 2021. Media ballpoint di atas kertas. Gambar ini merespon situasi hujan dimasa pandemi covid19 dan penomena tanaman keladi yang diburu banyak orang terutama kaum perempuan.
+
+>27 Januari 2021
+
+<hr>
+
+Pelukis:
+
+facebook : [Kidung Purnama](https://www.facebook.com/kidungp){:target="_blank"}  
+instagram : [@kidungpurnama2012](https://www.instagram.com/kidungpurnama2012/){:target="_blank"}

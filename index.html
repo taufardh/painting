@@ -32,9 +32,15 @@ title: "Gallery Painting"
                 <h3>{{ post.title }}</h3>
                 <span class="price">{{ post.artist }} - {% include date.html date=post.date %}</span>
               </div>
-              <p class="description">{{ post.description }}</p>
-              <br>
-              <p class="description">{% include date.html date=post.date %}</p>
+              <div class="description">
+                {{ post.content }}
+              </div>
+              <p class="description">
+                {{ post.author }}
+              </p>
+              <p class="description">
+                {% include date.html date=post.date %}
+              </p>
             </div>
             <div class="gallery-action">
               <a class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">favorite</i></a>
